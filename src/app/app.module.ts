@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {
   MatButtonModule, MatCardModule,
@@ -53,6 +54,7 @@ import { FocusDirective } from './components/directives/focus.directive'
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,

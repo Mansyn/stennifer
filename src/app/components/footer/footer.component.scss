@@ -1,4 +1,10 @@
-:host {
-  flex-shrink: 0;
-  margin-top: 53px;
+a:link,
+a:visited {
+  color: gray;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: silver;
 }

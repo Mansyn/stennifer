@@ -1,6 +1,5 @@
 import { Pipe } from '@angular/core'
 
-// tslint:disable-next-line:use-pipe-transform-interface
 @Pipe({
   name: 'truncate'
 })

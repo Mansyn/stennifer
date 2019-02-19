@@ -1,5 +1,5 @@
-<div class="columns is-mobile is-centered">
-  <div class="column is-one-third">
+<div fxLayout="column" fxLayoutAlign="center center" class="m-t-25">
+  <div>
     <mat-card>
       <mat-card-header>
         <mat-card-title>Login to get started...</mat-card-title>
@@ -30,9 +30,9 @@
         </mat-card-actions>
       </form>
     </mat-card>
-    <div class="content txt-center m-t-15">
-      <p>or</p>
-      <button mat-raised-button (click)="auth.googleLogin()" color="accent">Google Login</button>
-    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <p>or</p>
+    <button mat-raised-button (click)="auth.googleLogin()" color="accent">Google Login</button>
   </div>
 </div>
