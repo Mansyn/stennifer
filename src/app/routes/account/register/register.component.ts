@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     })
   }
 
-  onRegister(form: FormGroup) {
+  onRegister() {
     if (this.form.valid) {
       this.working = true
       const self = this
