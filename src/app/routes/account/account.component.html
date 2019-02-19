@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start stretch" fxLayoutGap="25px">
   <div fxFlex="25">
     <div *ngIf="user">
       <mat-card>
@@ -28,6 +28,12 @@
     </div>
   </div>
   <div fxFlex>
-    <p>Second nested column</p>
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="25px">
+      <mat-card>
+        <h3 class="mat-display-1">
+          Your RSVP
+        </h3>
+      </mat-card>
+    </div>
   </div>
 </div>

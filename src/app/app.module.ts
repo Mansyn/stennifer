@@ -31,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component'
 import { NotificationService } from './core/services/notification.service'
 import { PipesModule } from './components/pipes/pipes.module'
 import { DisableControlDirective } from './components/directives/disable-control'
-import { FocusDirective } from './components/directives/focus.directive'
+import { FocusDirective } from './components/directives/focus.directive';
+import { InvitationComponent } from './routes/invitation/invitation.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { FocusDirective } from './components/directives/focus.directive'
     NavbarComponent,
     FooterComponent,
     DisableControlDirective,
-    FocusDirective
+    FocusDirective,
+    InvitationComponent
   ],
   imports: [
     AngularFireAuthModule,
