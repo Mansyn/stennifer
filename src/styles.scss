@@ -88,3 +88,17 @@ $sides: (top, bottom, left, right);
 .txt-right {
   text-align: right;
 }
+
+.show-small {
+  display: none
+}
+
+@media (max-width:720px) {
+  .hide-small {
+    display: none
+  }
+
+  .show-small {
+    display: block;
+  }
+}

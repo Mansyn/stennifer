@@ -1,6 +1,6 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="m-t-25 p-l-15 p-r-15">
-  <div>
-    <mat-card style="max-width: 500px;">
+<div fxLayout="row" fxLayoutAlign="center center" class="m-t-25">
+  <div fxFlex="40" fxFlexOffset="30">
+    <mat-card>
       <mat-card-header>
         <mat-card-title>Register</mat-card-title>
       </mat-card-header>
@@ -35,7 +35,10 @@
         </mat-card-content>
         <mat-card-actions style="margin:0">
           <div fxLayout="row" fxLayoutAlign="center center">
-            <button mat-raised-button (click)="auth.googleLogin()" color="primary">Google Login</button>
+            <button mat-raised-button (click)="auth.googleLogin()" color="primary">
+              Google
+              <span class="hide-small">Login</span>
+            </button>
             <span class="spacer"></span>
             <button mat-raised-button type="submit" [disabled]="!form.valid || working" color="primary">Register</button>
           </div>
@@ -43,4 +46,5 @@
       </form>
     </mat-card>
   </div>
+  <div fxFlex></div>
 </div>

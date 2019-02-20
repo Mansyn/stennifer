@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {
   MatButtonModule, MatCardModule,
+  MatExpansionModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -31,8 +32,9 @@ import { FooterComponent } from './components/footer/footer.component'
 import { NotificationService } from './core/services/notification.service'
 import { PipesModule } from './components/pipes/pipes.module'
 import { DisableControlDirective } from './components/directives/disable-control'
-import { FocusDirective } from './components/directives/focus.directive';
+import { FocusDirective } from './components/directives/focus.directive'
 import { InvitationComponent } from './routes/invitation/invitation.component'
+import { GuestsComponent } from './routes/guests/guests.component'
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { InvitationComponent } from './routes/invitation/invitation.component'
     FooterComponent,
     DisableControlDirective,
     FocusDirective,
-    InvitationComponent
+    InvitationComponent,
+    GuestsComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -59,6 +62,7 @@ import { InvitationComponent } from './routes/invitation/invitation.component'
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
+    MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatListModule,

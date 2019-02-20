@@ -6,6 +6,7 @@ import { AccountComponent } from './routes/account/account.component'
 import { LoginComponent } from './routes/account/login/login.component'
 import { RegisterComponent } from './routes/account/register/register.component'
 import { InvitationComponent } from './routes/invitation/invitation.component'
+import { GuestsComponent } from './routes/guests/guests.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent },
   { path: 'account/login', component: LoginComponent },
   { path: 'account/register', component: RegisterComponent },
+  { path: 'guests', component: GuestsComponent },
   { path: '*', redirectTo: 'home' }
 ];
 
