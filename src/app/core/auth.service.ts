@@ -155,14 +155,12 @@ export class AuthService {
   }
 
   getAllUsers() {
-    this.usersCollection = this.afs.collection<User>('users');
-    this.users = this.usersCollection.valueChanges();
-    return this.users;
+    this.usersCollection = this.afs.collection<User>('users')
+    return this.usersCollection.valueChanges()
   }
 
   getAllSubscribers() {
-    this.usersCollection = this.afs.collection('users', (ref) => ref.where('roles.subscriber', '==', true));
-    this.users = this.usersCollection.valueChanges();
-    return this.users;
+    this.usersCollection = this.afs.collection('users', (ref) => ref.where('roles.subscriber', '==', true))
+    return this.usersCollection.valueChanges()
   }
 }

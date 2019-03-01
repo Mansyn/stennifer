@@ -5,39 +5,17 @@
         Current Guests
       </h3>
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let user of users$ | async">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              John Doe
+              {{user.displayName}}
             </mat-panel-title>
             <mat-panel-description>
               +1
             </mat-panel-description>
           </mat-expansion-panel-header>
-
           <mat-form-field>
-            <input matInput placeholder="Bringing" value="Sarah Doe">
-          </mat-form-field>
-
-          <mat-form-field>
-            <input matInput placeholder="Date" value="1/22/2019">
-          </mat-form-field>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Stewart Little
-            </mat-panel-title>
-            <mat-panel-description>
-              +3
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-form-field>
-            <input matInput placeholder="Bringing" value="Sarah Doe">
-          </mat-form-field>
-
-          <mat-form-field>
-            <input matInput placeholder="Date" value="1/22/2019">
+            <input matInput placeholder="Bringing" disabled [(ngModel)]="user.email">
           </mat-form-field>
         </mat-expansion-panel>
       </mat-accordion>

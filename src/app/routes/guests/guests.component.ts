@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
+import { AuthService } from 'src/app/core/auth.service'
+import { ProfileService } from 'src/app/core/profile.service'
+import { User, Profile } from '../../models/user'
 
 @Component({
   selector: 'app-guests',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestsComponent implements OnInit {
 
-  constructor() { }
+  users$: Observable<User[]>
+
+  constructor(
+    public auth: AuthService,
+    public profileService: ProfileService) { }
 
   ngOnInit() {
+    this.users$ = this.auth.getAllUsers()
   }
 
+  // getProfile(user: User): Observable<Profile> {
+  //   return this.profileService.getUserProfileData(user.uid)[0]
+  // }
 }

@@ -2,11 +2,14 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireModule } from '@angular/fire'
-import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {
-  MatButtonModule, MatCardModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
   MatExpansionModule,
   MatIconModule,
   MatInputModule,
@@ -35,6 +38,7 @@ import { DisableControlDirective } from './components/directives/disable-control
 import { FocusDirective } from './components/directives/focus.directive'
 import { InvitationComponent } from './routes/invitation/invitation.component'
 import { GuestsComponent } from './routes/guests/guests.component'
+import { ProfileService } from './core/profile.service'
 
 @NgModule({
   declarations: [
@@ -62,6 +66,8 @@ import { GuestsComponent } from './routes/guests/guests.component'
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
     MatExpansionModule,
     MatIconModule,
     MatInputModule,
@@ -73,7 +79,11 @@ import { GuestsComponent } from './routes/guests/guests.component'
     MatToolbarModule,
     PipesModule
   ],
-  providers: [NotificationService],
+  providers: [
+    NotificationService,
+    ProfileService,
+    { provide: FirestoreSettingsToken, useValue: {} }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

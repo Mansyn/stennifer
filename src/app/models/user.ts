@@ -15,11 +15,11 @@ export interface User {
 }
 
 export interface Profile {
-    uid: string;
-    user_uid: string;
-    mailing: boolean;
-    name: string;
-    phoneNumber: string;
+    uid: string
+    user_uid: string
+    addtional: number
+    over21: boolean
+    acceptDate: number
 }
 
 export interface UserProfile {

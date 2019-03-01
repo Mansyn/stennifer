@@ -37,7 +37,9 @@
           <div fxLayout="row" fxLayoutAlign="center center">
             <button mat-raised-button (click)="auth.googleLogin()" color="primary">
               Google
-              <span class="hide-small">Login</span>
+            </button>
+            <button mat-raised-button (click)="auth.facebookLogin()" color="primary">
+              Facebook
             </button>
             <span class="spacer"></span>
             <button mat-raised-button type="submit" [disabled]="!form.valid || working" color="primary">Register</button>

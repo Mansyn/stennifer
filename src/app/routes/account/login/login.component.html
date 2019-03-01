@@ -26,12 +26,14 @@
         </mat-card-content>
         <mat-card-actions style="margin:0">
           <div fxLayout="row" fxLayoutAlign="center center">
-            <button mat-raised-button (click)="auth.googleLogin()" color="primary">
+            <button mat-raised-button type="button" (click)="auth.googleLogin()" color="accent">
               Google
-              <span class="hide-small">Login</span>
+            </button>
+            <button mat-raised-button type="button" (click)="auth.facebookLogin()" color="accent">
+              Facebook
             </button>
             <span class="spacer"></span>
-            <button mat-raised-button [routerLink]="['/account/register']" type="button" color="accent">Register</button>
+            <button mat-raised-button [routerLink]="['/account/register']" type="button" color="primary">Register</button>
             <button mat-raised-button type="submit" [disabled]="!form.valid" color="primary">Login</button>
           </div>
         </mat-card-actions>
