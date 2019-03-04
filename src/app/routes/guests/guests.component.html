@@ -1,9 +1,9 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="m-t-25">
   <div fxFlex="66" fxFlexOffset="17">
     <mat-card>
-      <h3 class="mat-display-1">
-        Current Guests
-      </h3>
+      <mat-card-header>
+        <mat-card-title>Current Guests</mat-card-title>
+      </mat-card-header>
       <mat-accordion>
         <mat-expansion-panel *ngFor="let user of users$ | async">
           <mat-expansion-panel-header>
