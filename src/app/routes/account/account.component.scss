@@ -4,6 +4,10 @@
   margin: 0 25px;
 }
 
+#top>div {
+  width: 100%;
+}
+
 .mat-card-avatar .mat-icon {
   width: 40px;
   height: 40px;
@@ -13,6 +17,10 @@
 .photo {
   border-radius: 6px !important;
   width: 100%;
+}
+
+.mat-checkbox {
+  text-align: center;
 }
 
 .form-container {

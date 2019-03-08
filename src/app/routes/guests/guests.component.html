@@ -5,13 +5,13 @@
         <mat-card-title>Current Guests</mat-card-title>
       </mat-card-header>
       <mat-accordion>
-        <mat-expansion-panel *ngFor="let user of users$ | async">
+        <mat-expansion-panel *ngFor="let user of userProfiles">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{user.displayName}}
             </mat-panel-title>
             <mat-panel-description>
-              +1
+              {{user.additional}} additionals
             </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-form-field>

@@ -1,3 +1,4 @@
+import * as moment from 'moment'
 
 export interface Roles {
     subscriber?: boolean;
@@ -17,17 +18,19 @@ export interface User {
 export interface Profile {
     uid: string
     user_uid: string
-    addtional: number
-    over21: boolean
+    additional: number
+    birthday: string
     acceptDate: number
 }
 
 export interface UserProfile {
-    uid: string;
-    displayName: string;
-    email: string;
-    phoneNumber: string;
-    photoURL: string;
-    roles: Roles;
-    profile: Profile;
+    uid: string
+    displayName: string
+    email: string
+    phoneNumber: string
+    photoURL: string
+    roles: Roles
+    additional: number
+    birthday: moment.Moment
+    acceptDate: number
 }

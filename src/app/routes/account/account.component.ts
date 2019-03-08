@@ -1,65 +1,108 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, SimpleChanges } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router'
 import { MatSnackBar } from '@angular/material'
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
-import { Subject, Observable } from 'rxjs'
-import { takeUntil, map } from 'rxjs/operators'
-import * as firebase from 'firebase'
+import { FormGroup } from '@angular/forms'
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter'
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
+
+import { Subject, combineLatest } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
+import * as moment from 'moment'
 
 import { AuthService } from 'src/app/core/auth.service'
-import { User, Profile } from 'src/app/models/user'
+import { Profile, UserProfile } from 'src/app/models/user'
 import { ProfileService } from 'src/app/core/profile.service'
 
 @Component({
   selector: 'account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
+  providers: [
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  ]
 })
 export class AccountComponent implements OnInit, OnDestroy {
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  destroy$: Subject<boolean> = new Subject<boolean>()
 
   form: FormGroup
-  user: User
-  profileQuery: Observable<Profile[]>
   newProfile = {
-    addtional: 0,
-    over21: false
-  } as Profile
+    additional: 0,
+    acceptDate: -1
+  }
+
+  profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, birthday: '' }
+  userprofile: UserProfile
 
   constructor(
     private afAuth: AngularFireAuth,
     public auth: AuthService,
     public profileService: ProfileService,
     private router: Router,
-    private fb: FormBuilder,
     public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.auth.user$.pipe(takeUntil(this.destroy$)).subscribe((_user) => {
+    const user$ = this.auth.user$
+    const profiles$ = this.profileService.getProfiles()
+
+    combineLatest(user$, profiles$, (_user, _profiles) => {
+
       if (_user && _user.uid) {
-        this.user = _user
-        this.profileQuery = this.profileService.getUserProfile(_user.uid).snapshotChanges().pipe(
-          map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as Profile;
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          })))
+        this.userprofile = {
+          uid: _user.uid,
+          email: _user.email,
+          displayName: _user.displayName,
+          phoneNumber: _user.phoneNumber,
+          photoURL: _user.photoURL,
+          additional: 0,
+          acceptDate: -1
+        } as UserProfile
+        for (let _profile of _profiles) {
+          if (_profile.user_uid === _user.uid) {
+            this.profile = _profile
+            this.userprofile.additional = _profile.additional
+            this.userprofile.birthday = moment(_profile.birthday)
+            this.userprofile.acceptDate = _profile.acceptDate
+          }
+        }
       } else {
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/account/login'])
       }
+
     })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe()
   }
 
   displayDate(dateTime) {
     return (new Date(dateTime)).toDateString()
   }
 
-  onSave() {
-    this.newProfile.user_uid = this.user.uid
-    this.newProfile.acceptDate = new Date().getTime()
-    this.profileService.addProfile(this.newProfile)
+  onAdd() {
+    delete this.profile.uid
+    this.profile.user_uid = this.userprofile.uid
+    this.profile.additional = this.newProfile.additional
+    this.profile.birthday = this.newProfile['birthday'].format('MM-DD-YYYY')
+    this.profile.acceptDate = new Date().getTime()
+    this.profileService.addProfile(this.profile)
+  }
+
+  onUpdate() {
+    this.profile.additional = this.userprofile.additional
+    this.profile.birthday = this.userprofile.birthday.format('MM-DD-YYYY')
+    this.profile.acceptDate = new Date().getTime()
+    this.profileService.updateProfile(this.profile)
+  }
+
+  disableUpdate() {
+    if (this.userprofile.birthday == null || this.profile.additional == null) {
+      return true
+    } else {
+      return this.profile.additional == this.userprofile.additional &&
+        this.profile.birthday == this.userprofile.birthday.format('MM-DD-YYYY')
+    }
   }
 
   signout() {

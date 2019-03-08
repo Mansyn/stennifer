@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
+import { combineLatest, Subject } from 'rxjs'
 import { AuthService } from 'src/app/core/auth.service'
 import { ProfileService } from 'src/app/core/profile.service'
-import { User, Profile } from '../../models/user'
+import { UserProfile } from '../../models/user'
+import UserUtils from 'src/app/models/user.utils'
+import { takeUntil } from 'rxjs/operators'
 
 @Component({
   selector: 'app-guests',
@@ -10,18 +12,34 @@ import { User, Profile } from '../../models/user'
   styleUrls: ['./guests.component.scss']
 })
 export class GuestsComponent implements OnInit {
+  destroy$: Subject<boolean> = new Subject<boolean>()
 
-  users$: Observable<User[]>
+  userProfiles: UserProfile[] = []
 
   constructor(
     public auth: AuthService,
     public profileService: ProfileService) { }
 
   ngOnInit() {
-    this.users$ = this.auth.getAllUsers()
+    const users$ = this.auth.getAllUsers()
+    const profiles$ = this.profileService.getProfiles()
+
+    combineLatest(users$, profiles$, (_users, _profiles) => {
+
+      for (let _user of _users) {
+        let _profile = _profiles.find(p => p.user_uid == _user.uid)
+        let userProfile = UserUtils.mapToUserProfile(_user, _profile)
+        if (userProfile) {
+          this.userProfiles.push(userProfile)
+        }
+      }
+    })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe()
   }
 
-  // getProfile(user: User): Observable<Profile> {
-  //   return this.profileService.getUserProfileData(user.uid)[0]
-  // }
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 }

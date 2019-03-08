@@ -1,4 +1,5 @@
-import { User, Profile, UserProfile } from './user';
+import { User, Profile, UserProfile } from './user'
+import * as moment from 'moment'
 
 export default class UserUtils {
   static mapToUserProfile(user: User, profile: Profile): UserProfile {
@@ -9,7 +10,9 @@ export default class UserUtils {
       phoneNumber: user.phoneNumber,
       photoURL: user.photoURL,
       roles: user.roles,
-      profile: profile
+      additional: profile ? profile.additional : 0,
+      birthday: profile ? moment(profile.birthday) : moment(),
+      acceptDate: profile ? profile.acceptDate : 0
     };
 
     return userProfile;
