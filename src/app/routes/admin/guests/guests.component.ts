@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core'
 import { combineLatest, Subject } from 'rxjs'
 import { AuthService } from 'src/app/core/auth.service'
 import { ProfileService } from 'src/app/core/profile.service'
-import { UserProfile } from '../../models/user'
 import UserUtils from 'src/app/models/user.utils'
 import { takeUntil } from 'rxjs/operators'
+import { UserProfile } from 'src/app/models/user'
 
 @Component({
   selector: 'app-guests',

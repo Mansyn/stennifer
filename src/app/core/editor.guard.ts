@@ -22,7 +22,6 @@ export class EditorGuard implements CanActivate {
           console.error('Access denied - Admins and Editors only')
         }
       })
-    );
-
+    )
   }
 }

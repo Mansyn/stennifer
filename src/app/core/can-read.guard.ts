@@ -21,7 +21,6 @@ export class CanReadGuard implements CanActivate {
           console.error('Access denied. Must have permission to view content')
         }
       })
-    );
-
+    )
   }
 }

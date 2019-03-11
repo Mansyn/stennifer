@@ -1,0 +1,85 @@
+<div>
+  <mat-progress-bar *ngIf="!userProfiles" mode="query"></mat-progress-bar>
+  <div class="m-t-25" fxLayout="row">
+    <div fxFlex="90" fxFlex.gt-xs="86" fxFlex.gt-md="76" fxFlexOffset="5" fxFlexOffset.gt-xs="7" fxFlexOffset.gt-md="12"
+      class="mat-elevation-z4">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Users</span>
+          <span class="spacer"></span>
+
+          <!-- User Functions -->
+          <button mat-raised-button *ngIf="selection.selected.length > 0 && isRole('editor')" color="warn" (click)="roleDialog(false, 'editor')">
+            Remove Editor
+          </button>
+          <button mat-raised-button *ngIf="selection.selected.length > 0 && isRole('admin')" color="warn" (click)="roleDialog(false, 'admin')">
+            Remove Admin
+          </button>
+          <button mat-raised-button *ngIf="selection.selected.length > 0 && !isRole('editor')" color="accent" (click)="roleDialog(true, 'editor')">
+            Set Editor
+          </button>
+          <button mat-raised-button *ngIf="selection.selected.length > 0 && !isRole('admin')" color="accent" (click)="roleDialog(true, 'admin')">
+            Set Admin
+          </button>
+          <button mat-raised-button *ngIf="selection.selected.length == 1" color="primary" (click)="userDialog()">
+            Edit
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="form-padding">
+        <div class="layout-column layout-gt-sm-row">
+          <div class="full-width">
+            <mat-table #table matSort [dataSource]="dataSource">
+
+              <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                  </mat-checkbox>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+                  </mat-checkbox>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.profile ? element.profile.name : element.displayName}}
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="phoneNumber">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  {{element.profile ? element.profile.phoneNumber : element.phoneNumber | phone}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="roles">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Roles </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <mat-chip-list>
+                    <mat-chip *ngIf="element.roles?.editor" color="primary" selected="true">Editor</mat-chip>
+                    <mat-chip *ngIf="element.roles?.admin" color="warn" selected="true">Admin</mat-chip>
+                  </mat-chip-list>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex></div>
+  </div>
+</div>

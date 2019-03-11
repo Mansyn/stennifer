@@ -1,13 +1,5 @@
 @import '~@angular/material/theming';
 
-:host>div {
-  margin: 0 25px;
-}
-
-#top>div {
-  width: 100%;
-}
-
 .mat-card-avatar .mat-icon {
   width: 40px;
   height: 40px;
@@ -19,6 +11,14 @@
   width: 100%;
 }
 
+.ellipsis {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .mat-checkbox {
   text-align: center;
 }
@@ -27,4 +27,20 @@
   background-color: map-get($mat-grey, 100);
   padding: 30px 25px;
   border-radius: 4px;
+}
+
+.phone {
+  font-size: 20px;
+  width: 100%;
+  font-weight: 300;
+  cursor: text;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 2px;
+}
+
+.phone-edit {
+  font-size: 20px;
+  width: 100%;
+  font-weight: 300;
 }

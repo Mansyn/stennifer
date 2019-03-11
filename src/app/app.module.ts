@@ -37,7 +37,6 @@ import { PipesModule } from './components/pipes/pipes.module'
 import { DisableControlDirective } from './components/directives/disable-control'
 import { FocusDirective } from './components/directives/focus.directive'
 import { InvitationComponent } from './routes/invitation/invitation.component'
-import { GuestsComponent } from './routes/guests/guests.component'
 import { ProfileService } from './core/profile.service'
 
 @NgModule({
@@ -51,8 +50,7 @@ import { ProfileService } from './core/profile.service'
     FooterComponent,
     DisableControlDirective,
     FocusDirective,
-    InvitationComponent,
-    GuestsComponent
+    InvitationComponent
   ],
   imports: [
     AngularFireAuthModule,

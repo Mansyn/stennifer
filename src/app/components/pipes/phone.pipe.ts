@@ -8,7 +8,7 @@ import { Injectable, Pipe } from '@angular/core';
 export class PhonePipe {
   transform(tel, args) {
     if (!tel) {
-      return 'Phone #'
+      return '[no phone]'
     }
 
     const value = tel.toString().trim().replace(/^\+|-|\(|\)/g, '')

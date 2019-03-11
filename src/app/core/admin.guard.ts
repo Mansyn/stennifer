@@ -21,7 +21,6 @@ export class AdminGuard implements CanActivate {
           console.error('Access denied - Admins only')
         }
       })
-    );
-
+    )
   }
 }

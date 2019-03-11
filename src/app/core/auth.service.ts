@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
 import { firebase } from '@firebase/app'
 import '@firebase/auth'
 import { AngularFireAuth } from '@angular/fire/auth'
@@ -7,20 +6,19 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable, of } from 'rxjs'
 import { switchMap } from 'rxjs/operators'
 
-import { User, Profile } from '../models/user'
+import { User } from '../models/user'
 
 @Injectable()
 export class AuthService {
-  user$: Observable<User>;
+  user$: Observable<User>
 
   // only for admin use
-  private usersCollection: AngularFirestoreCollection<User>;
-  users: Observable<User[]>;
+  private usersCollection: AngularFirestoreCollection<User>
+  users: Observable<User[]>
 
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
   ) {
     //// Get auth data, then get firestore user document || null
     this.user$ = this.afAuth.authState.pipe(
@@ -42,8 +40,8 @@ export class AuthService {
       phoneNumber: response.phoneNumber,
       photoURL: response.photoURL,
       roles: {}
-    };
-    this.updateUserData(user);
+    }
+    this.updateUserData(user)
   }
 
   registerUser(response, name, phoneNumber?) {
@@ -54,24 +52,24 @@ export class AuthService {
       phoneNumber: phoneNumber || '',
       photoURL: response.photoURL,
       roles: {}
-    };
-    this.updateUserData(user);
+    }
+    this.updateUserData(user)
   }
 
   googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider()
     return this.oAuthLogin(provider)
   }
 
   facebookLogin() {
-    const provider = new firebase.auth.FacebookAuthProvider();
+    const provider = new firebase.auth.FacebookAuthProvider()
     return this.oAuthLogin(provider)
   }
 
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider).then((credential) => {
       this.updateUserData(credential.user)
-    });
+    })
   }
 
   signOut() {
@@ -80,7 +78,7 @@ export class AuthService {
 
   private updateUserData(user) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
     const data: User = {
       uid: user.uid,
       displayName: user.displayName,
@@ -90,13 +88,13 @@ export class AuthService {
       roles: {
         subscriber: true
       }
-    };
-    return userRef.set(data, { merge: true });
+    }
+    return userRef.set(data, { merge: true })
   }
 
   setUserEditor(user, isEditor) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
     const data: User = {
       uid: user.uid,
       displayName: user.displayName,
@@ -106,13 +104,13 @@ export class AuthService {
       roles: {
         editor: isEditor
       }
-    };
-    return userRef.set(data, { merge: true });
+    }
+    return userRef.set(data, { merge: true })
   }
 
   setUserAdmin(user, isAdmin) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
     const data: User = {
       uid: user.uid,
       displayName: user.displayName,
@@ -122,36 +120,36 @@ export class AuthService {
       roles: {
         admin: isAdmin
       }
-    };
-    return userRef.set(data, { merge: true });
+    }
+    return userRef.set(data, { merge: true })
   }
 
   ///// Role-based Authorization //////
 
   canRead(user: User): boolean {
-    const allowed = ['admin', 'editor', 'subscriber'];
-    return this.checkAuthorization(user, allowed);
+    const allowed = ['admin', 'editor', 'subscriber']
+    return this.checkAuthorization(user, allowed)
   }
 
   canEdit(user: User): boolean {
-    const allowed = ['admin', 'editor'];
-    return this.checkAuthorization(user, allowed);
+    const allowed = ['admin', 'editor']
+    return this.checkAuthorization(user, allowed)
   }
 
   canDelete(user: User): boolean {
-    const allowed = ['admin'];
-    return this.checkAuthorization(user, allowed);
+    const allowed = ['admin']
+    return this.checkAuthorization(user, allowed)
   }
 
   // determines if user has matching role
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
-    if (!user) { return false; }
+    if (!user) { return false }
     for (const role of allowedRoles) {
       if (user.roles[role]) {
-        return true;
+        return true
       }
     }
-    return false;
+    return false
   }
 
   getAllUsers() {

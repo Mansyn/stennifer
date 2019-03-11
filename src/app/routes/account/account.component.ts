@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators'
 import * as moment from 'moment'
 
 import { AuthService } from 'src/app/core/auth.service'
-import { Profile, UserProfile } from 'src/app/models/user'
+import { Profile, UserProfile, User } from 'src/app/models/user'
 import { ProfileService } from 'src/app/core/profile.service'
 
 @Component({
@@ -31,6 +31,10 @@ export class AccountComponent implements OnInit, OnDestroy {
     additional: 0,
     acceptDate: -1
   }
+  userRef: User
+  phoneNumberRef = ''
+  emailRef = ''
+  nameRef = ''
 
   profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, birthday: '' }
   userprofile: UserProfile
@@ -50,6 +54,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     combineLatest(user$, profiles$, (_user, _profiles) => {
 
       if (_user && _user.uid) {
+
         this.userprofile = {
           uid: _user.uid,
           email: _user.email,
@@ -59,6 +64,12 @@ export class AccountComponent implements OnInit, OnDestroy {
           additional: 0,
           acceptDate: -1
         } as UserProfile
+
+        this.userRef = this.userprofile
+        this.emailRef = this.userprofile.email
+        this.nameRef = this.userprofile.displayName
+        this.phoneNumberRef = this.userprofile.phoneNumber
+
         for (let _profile of _profiles) {
           if (_profile.user_uid === _user.uid) {
             this.profile = _profile
@@ -102,6 +113,18 @@ export class AccountComponent implements OnInit, OnDestroy {
     } else {
       return this.profile.additional == this.userprofile.additional &&
         this.profile.birthday == this.userprofile.birthday.format('MM-DD-YYYY')
+    }
+  }
+
+  toggleUser() {
+    if (this.userRef.displayName.length
+      && this.userRef.email.length
+      && this.userRef.phoneNumber.length === 10) {
+      this.auth.updateUser(this.userRef)
+    } else {
+      this.userRef.phoneNumber = this.phoneNumberRef
+      this.userRef.email = this.emailRef
+      this.userRef.displayName = this.nameRef
     }
   }
 
