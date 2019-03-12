@@ -1,8 +1,8 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core'
+import { Component, ViewChild, AfterViewInit, Inject } from '@angular/core'
 import { AuthService } from 'src/app/core/auth.service'
 import { Subject, combineLatest } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
-import { MatSort, MatPaginator, MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material'
+import { MatSort, MatPaginator, MatTableDataSource, MatDialog, MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 
 import { UserProfile } from 'src/app/models/user'
 import { SelectionModel } from '@angular/cdk/collections'
@@ -117,8 +117,61 @@ export class UsersComponent implements AfterViewInit {
     })
   }
 
+  openPhoneDialog(): void {
+    const target = this.selection.selected[0]
+    const dialogRef = this.dialog.open(UserPhoneDialog, {
+      width: '250px',
+      data: { name: target.displayName, phone: target.phoneNumber }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        target.phoneNumber = result
+        this.auth.updateUserSoft(target)
+      }
+      this.selection.clear()
+    })
+  }
+
   ngOnDestroy() {
     this.destroy$.next(true)
     this.destroy$.unsubscribe()
+  }
+}
+
+export interface DialogData {
+  phone: string
+  name: string
+}
+
+@Component({
+  selector: 'user-phone-dialog',
+  template: `<h1 mat-dialog-title>Set Phone Number</h1>
+  <div mat-dialog-content>
+    <p>What's the phone number for {{data.name}}?</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.phone" maxlength="10">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button [disabled]="isPhoneInvalid()" [mat-dialog-close]="data.phone" cdkFocusInitial>Ok</button>
+  </div>`,
+})
+export class UserPhoneDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<UserPhoneDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  onCancelClick(): void {
+    this.dialogRef.close()
+  }
+
+  isPhoneInvalid() {
+    if (this.data.phone) {
+      return this.data.phone.length != 10
+    }
+    return true
   }
 }

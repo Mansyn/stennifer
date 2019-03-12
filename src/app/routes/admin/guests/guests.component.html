@@ -1,7 +1,7 @@
 <div>
   <mat-progress-bar *ngIf="userProfiles.length == 0" mode="query"></mat-progress-bar>
   <div fxLayout="row" fxLayoutAlign="center center" class="m-t-25">
-    <div fxFlex="66" fxFlexOffset="17">
+    <div fxFlex="90" fxFlex.gt-xs="86" fxFlex.gt-md="76" fxFlexOffset="5" fxFlexOffset.gt-xs="7" fxFlexOffset.gt-md="12">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Current Guests</mat-card-title>
@@ -16,9 +16,20 @@
                 {{user.additional}} additionals
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <mat-form-field>
-              <input matInput placeholder="Bringing" disabled [(ngModel)]="user.email">
-            </mat-form-field>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
+              <mat-form-field fxFlex="40">
+                <input matInput placeholder="Email" [(ngModel)]="user.email">
+              </mat-form-field>
+              <mat-form-field fxFlex="25">
+                <input matInput placeholder="Phone" [(ngModel)]="user.phoneNumber">
+              </mat-form-field>
+              <mat-form-field fxFlex="10">
+                <input matInput placeholder="Age" [value]="findAge(user.birthday)">
+              </mat-form-field>
+              <mat-form-field fxFlex="25">
+                <input matInput placeholder="Accepted" [value]="displayDate(user.acceptDate)">
+              </mat-form-field>
+            </div>
           </mat-expansion-panel>
         </mat-accordion>
       </mat-card>

@@ -120,7 +120,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     if (this.userRef.displayName.length
       && this.userRef.email.length
       && this.userRef.phoneNumber.length === 10) {
-      this.auth.updateUser(this.userRef)
+      this.auth.updateUserSoft(this.userRef)
     } else {
       this.userRef.phoneNumber = this.phoneNumberRef
       this.userRef.email = this.emailRef

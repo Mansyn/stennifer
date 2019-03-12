@@ -5,6 +5,7 @@ import { ProfileService } from 'src/app/core/profile.service'
 import UserUtils from 'src/app/models/user.utils'
 import { takeUntil } from 'rxjs/operators'
 import { UserProfile } from 'src/app/models/user'
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-guests',
@@ -15,6 +16,7 @@ export class GuestsComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>()
 
   userProfiles: UserProfile[] = []
+  today: moment.Moment = moment()
 
   constructor(
     public auth: AuthService,
@@ -36,6 +38,18 @@ export class GuestsComponent implements OnInit {
     })
       .pipe(takeUntil(this.destroy$))
       .subscribe()
+  }
+
+  findAge(birthday: moment.Moment) {
+    return this.today.diff(birthday, 'years')
+  }
+
+  displayDate(dateTime) {
+    if (dateTime == 0) {
+      return 'n/a'
+    } else {
+      return (new Date(dateTime)).toDateString()
+    }
   }
 
   ngOnDestroy() {

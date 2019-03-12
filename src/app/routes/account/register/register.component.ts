@@ -51,14 +51,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (this.form.valid) {
       this.working = true
       const self = this
-      // tslint:disable-next-line:no-shadowed-variable
       const form = this.form.value
       this.afAuth.auth.createUserWithEmailAndPassword(form.email, form.password)
         .then((user) => {
           self.auth.registerUser(user.user, form.name)
         })
         .catch(function (error) {
-          // Handle Errors here.
           const errorCode = error.code;
           const errorMessage = error.message;
           if (errorCode === 'auth/weak-password') {

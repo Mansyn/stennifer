@@ -10,17 +10,14 @@ import { User } from '../models/user'
 
 @Injectable()
 export class AuthService {
-  user$: Observable<User>
 
-  // only for admin use
   private usersCollection: AngularFirestoreCollection<User>
-  users: Observable<User[]>
+  user$: Observable<User>
 
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
   ) {
-    //// Get auth data, then get firestore user document || null
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -33,7 +30,7 @@ export class AuthService {
   }
 
   updateUser(response) {
-    const user: User = {
+    const user = {
       uid: response.uid,
       displayName: response.displayName,
       email: response.email,
@@ -44,8 +41,27 @@ export class AuthService {
     this.updateUserData(user)
   }
 
+  updateUserSoft(user: any) {
+    this.afs.doc<firebase.User>(`users/${user.uid}`).valueChanges()
+      .subscribe(_user => {
+        if (_user) {
+          let updatedUser: User = {
+            uid: user.uid,
+            displayName: user.displayName || _user.displayName,
+            email: user.email || _user.email,
+            phoneNumber: user.phoneNumber || _user.phoneNumber,
+            photoURL: user.photoURL || _user.photoURL,
+            roles: _user['roles']
+          }
+          this.afs.doc(`users/${user.uid}`).set(updatedUser, { merge: true })
+        } else {
+          this.updateUser(user)
+        }
+      })
+  }
+
   registerUser(response, name, phoneNumber?) {
-    const user: User = {
+    const user = {
       uid: response.uid,
       displayName: name,
       email: response.email,
@@ -68,7 +84,7 @@ export class AuthService {
 
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider).then((credential) => {
-      this.updateUserData(credential.user)
+      this.updateUserSoft(credential.user)
     })
   }
 
@@ -76,8 +92,7 @@ export class AuthService {
     this.afAuth.auth.signOut()
   }
 
-  private updateUserData(user) {
-    // Sets user data to firestore on login
+  private updateUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
     const data: User = {
       uid: user.uid,
@@ -92,8 +107,7 @@ export class AuthService {
     return userRef.set(data, { merge: true })
   }
 
-  setUserEditor(user, isEditor) {
-    // Sets user data to firestore on login
+  setUserEditor(user: any, isEditor: boolean) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
     const data: User = {
       uid: user.uid,
