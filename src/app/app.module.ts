@@ -19,6 +19,7 @@ import {
   MatProgressSpinnerModule,
   MatSnackBarModule, MatToolbarModule
 } from '@angular/material'
+import {SlideshowModule} from 'ng-simple-slideshow'
 
 import { environment } from '../environments/environment'
 
@@ -62,6 +63,7 @@ import { ProfileService } from './core/profile.service'
     BrowserAnimationsModule,
     CoreModule,
     FlexLayoutModule,
+    SlideshowModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,

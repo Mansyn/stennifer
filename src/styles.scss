@@ -58,6 +58,10 @@ img:focus,
   cursor: pointer;
 }
 
+.heavy {
+  font-weight: bold;
+}
+
 $spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35);
 $sides: (top, bottom, left, right);
 
@@ -99,6 +103,16 @@ $sides: (top, bottom, left, right);
   }
 
   .show-small {
+    display: block;
+  }
+}
+
+@media (max-width:600px) {
+  .hide-xsmall {
+    display: none
+  }
+
+  .show-xsmall {
     display: block;
   }
 }

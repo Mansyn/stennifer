@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore'
 import { Profile } from '../models/user'
 import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs/operators'
 
 @Injectable()
 export class ProfileService {
@@ -31,6 +31,7 @@ export class ProfileService {
 
     updateProfile(profile) {
         this.profileDoc = this._afs.doc(`profiles/${profile.id}`)
+        delete profile['id']
         this.profileDoc.update(profile)
     }
 
