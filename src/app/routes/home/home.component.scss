@@ -11,7 +11,7 @@
 
 .header-headline {
   h1 {
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Fascinate Inline', cursive;
     font-size: 72px;
     line-height: 72px;
     margin: 15px 5px;
@@ -34,6 +34,13 @@
 .museum {
   background-color: #fff;
 
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: black;
+  }
+
   .images {
     display: block;
     height: 500px;
@@ -43,7 +50,7 @@
     padding: 40px 0;
 
     h3 {
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Fascinate Inline', cursive;
       font-weight: bold;
       font-size: 28px;
     }
