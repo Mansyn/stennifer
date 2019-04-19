@@ -1,13 +1,15 @@
 <div class="header">
   <div class="header-section">
     <div class="header-headline">
-      <h1>Stennifer Wedding</h1>
-      <h2>Welcome to the event of the season</h2>
+      <h2>We are getting married!</h2>
+      <h1>Jennifer & Stephen</h1>
+      <h2>October 5, 2019</h2>
     </div>
     <div class="header-start">
       <button mat-raised-button color="warn" [routerLink]="['/invitation']">RSVP</button>
     </div>
   </div>
+  <wedding-countdown></wedding-countdown>
   <div class="museum" fxLayout="column" fxLayoutAlign="start stretch">
     <div class="images">
       <slideshow [imageUrls]="imageUrls" [lazyLoad]="imageUrls?.length > 1"></slideshow>
@@ -17,7 +19,12 @@
         <h3>When</h3>
         <p>October 5th <br />Doors Open: 6:00 PM<br />Ceremony: 6:30 PM</p>
         <h3>Where</h3>
-        <p><a href="https://www.americansignmuseum.org/" target="_blank">The American Sign Museum</a></p>
+        <p>
+          <a href="https://www.americansignmuseum.org/" target="_blank">The American Sign Museum</a>
+          <a mat-icon-button href="https://goo.gl/maps/aZQVtsmYQrE2" target="_blank">
+            <mat-icon aria-label="map">map</mat-icon>
+          </a>
+        </p>
         <h3>Directions</h3>
         <p>To access the museum from north of Cincinnati, take I-75 South to exit 3, Hopple Street. Turn right at the
           exit. Then turn right onto Colerain Avenue. Then take a left on Monmouth Avenue. The museum’s parking lot is
@@ -28,9 +35,6 @@
         <p>To access the museum from downtown Cincinnati, take Central Parkway north. Turn left at Monmouth Avenue.
           Continue on Monmouth, through Colerain Avenue. The museum’s parking lot is at the first entrance on the right,
           through the black gate.</p>
-        <p class="txt-center"><a mat-raised-button color="accent" href="https://goo.gl/maps/aZQVtsmYQrE2"
-            target="_blank">Map It</a>
-        </p>
       </div>
     </div>
   </div>

@@ -38,7 +38,8 @@ import { PipesModule } from './components/pipes/pipes.module'
 import { DisableControlDirective } from './components/directives/disable-control'
 import { FocusDirective } from './components/directives/focus.directive'
 import { InvitationComponent } from './routes/invitation/invitation.component'
-import { ProfileService } from './core/profile.service'
+import { ProfileService } from './core/profile.service';
+import { CountdownComponent } from './components/countdown/countdown.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProfileService } from './core/profile.service'
     FooterComponent,
     DisableControlDirective,
     FocusDirective,
-    InvitationComponent
+    InvitationComponent,
+    CountdownComponent
   ],
   imports: [
     AngularFireAuthModule,
