@@ -39,7 +39,9 @@ import { DisableControlDirective } from './components/directives/disable-control
 import { FocusDirective } from './components/directives/focus.directive'
 import { InvitationComponent } from './routes/invitation/invitation.component'
 import { ProfileService } from './core/profile.service';
-import { CountdownComponent } from './components/countdown/countdown.component'
+import { CountdownComponent } from './components/countdown/countdown.component';
+import { AccommodationsComponent } from './routes/accommodations/accommodations.component';
+import { PhotosComponent } from './routes/photos/photos.component'
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { CountdownComponent } from './components/countdown/countdown.component'
     DisableControlDirective,
     FocusDirective,
     InvitationComponent,
-    CountdownComponent
+    CountdownComponent,
+    AccommodationsComponent,
+    PhotosComponent
   ],
   imports: [
     AngularFireAuthModule,

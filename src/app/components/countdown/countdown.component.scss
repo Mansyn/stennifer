@@ -1,42 +1,42 @@
+@import '../../../styles.scss';
+
 :host {
   text-align: center;
-  color: white;
-  font-family: 'Covered By Your Grace', cursive;
+  font-family: 'Fascinate Inline', cursive;
 
   >div {
     width: 100%;
-    padding-bottom: 40px;
+    padding: 40px 80px;
     font-size: 40px;
     min-height: 260px;
 
     >div {
       line-height: 1;
+      padding: 0 5px;
     }
   }
 }
 
 span {
   display: block;
+  font-family: 'Roboto Mono', monospace;
   font-size: 20px;
   color: white;
+  padding: 15px 0;
 }
 
 .days {
-  font-size: 200px;
-  color: #db4844;
+  font-size: 120px;
 }
 
 .hours {
-  font-size: 150px;
-  color: #f07c22;
+  font-size: 120px;
 }
 
 .minutes {
-  font-size: 100px;
-  color: #f6da74;
+  font-size: 120px;
 }
 
 .seconds {
-  font-size: 50px;
-  color: #abcd58;
+  font-size: 120px;
 }

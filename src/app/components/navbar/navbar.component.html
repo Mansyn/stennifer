@@ -5,7 +5,17 @@
     <a mat-button [routerLink]="['/invitation']" class="m-l-5">
       <span class="mat-button-wrapper">
         <mat-icon aria-label="Contact">drafts</mat-icon>
-        <span class="hide-small m-l-5">Invitation</span>
+        <span class="hide-small m-l-5">RSVP</span>
+      </span>
+    </a><a mat-button [routerLink]="['/accommodations']" class="m-l-5">
+      <span class="mat-button-wrapper">
+        <mat-icon aria-label="Contact">hotel</mat-icon>
+        <span class="hide-small m-l-5">Accommodations</span>
+      </span>
+    </a><a mat-button [routerLink]="['/photos']" class="m-l-5">
+      <span class="mat-button-wrapper">
+        <mat-icon aria-label="Contact">photo_library</mat-icon>
+        <span class="hide-small m-l-5">Photos</span>
       </span>
     </a>
     <a mat-button *ngIf="canEdit" [routerLink]="['/admin/guests']">

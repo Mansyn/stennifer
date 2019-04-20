@@ -8,6 +8,8 @@ import * as moment from 'moment'
 })
 export class CountdownComponent implements OnInit {
 
+  weddingDateString: string
+  weddingTimeString: string
   weddingDate: moment.Moment
   now: moment.Moment
   timeLeft: moment.Duration
@@ -17,7 +19,10 @@ export class CountdownComponent implements OnInit {
   minutes: number
   seconds: number
 
-  constructor() { }
+  constructor() {
+    this.weddingDateString = "2019-10-05"
+    this.weddingTimeString = "18:00";
+  }
 
   ngOnInit() {
     setInterval(() => {
@@ -26,7 +31,7 @@ export class CountdownComponent implements OnInit {
   }
 
   makeTimer() {
-    this.weddingDate = moment("10-05-2019")
+    this.weddingDate = moment(this.weddingDateString + ' ' + this.weddingTimeString)
 
     this.now = moment()
 
