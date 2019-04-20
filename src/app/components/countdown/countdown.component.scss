@@ -27,16 +27,20 @@ span {
 
 .days {
   font-size: 120px;
+  color: mat-color($stennifer-accent, 800);
 }
 
 .hours {
   font-size: 120px;
+  color: mat-color($stennifer-accent, 600);
 }
 
 .minutes {
   font-size: 120px;
+  color: mat-color($stennifer-accent, 500);
 }
 
 .seconds {
   font-size: 120px;
+  color: mat-color($stennifer-accent, 400);
 }
