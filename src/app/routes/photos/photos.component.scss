@@ -1,0 +1,14 @@
+:host {
+  >div {
+    padding: 0 15px;
+    margin: 50px 0;
+  }
+}
+
+
+@media (min-width:750px) {
+
+  .inline {
+    height: 800px !important;
+  }
+}

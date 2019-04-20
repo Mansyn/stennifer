@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { PhonePipe } from './phone.pipe'
 import { ReversePipe } from './reverse.pipe'
 import { TruncatePipe } from './truncate.pipe'
+import { KeysPipe } from './keys.pipe'
 
 @NgModule({
     imports: [
         CommonModule
     ],
-    declarations: [PhonePipe, ReversePipe, TruncatePipe],
-    exports: [PhonePipe, ReversePipe, TruncatePipe]
+    declarations: [PhonePipe, ReversePipe, TruncatePipe, KeysPipe],
+    exports: [PhonePipe, ReversePipe, TruncatePipe, KeysPipe]
 })
 export class PipesModule { }

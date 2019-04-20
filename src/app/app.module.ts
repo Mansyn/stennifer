@@ -19,7 +19,8 @@ import {
   MatProgressSpinnerModule,
   MatSnackBarModule, MatToolbarModule
 } from '@angular/material'
-import {SlideshowModule} from 'ng-simple-slideshow'
+import { SlideshowModule } from 'ng-simple-slideshow'
+import { NgxImageGalleryModule } from 'ngx-image-gallery'
 
 import { environment } from '../environments/environment'
 
@@ -70,6 +71,7 @@ import { PhotosComponent } from './routes/photos/photos.component'
     CoreModule,
     FlexLayoutModule,
     SlideshowModule,
+    NgxImageGalleryModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
