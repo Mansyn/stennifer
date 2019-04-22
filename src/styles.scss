@@ -62,6 +62,10 @@ img:focus,
   font-weight: bold;
 }
 
+.mat-card-title {
+  font-family: 'Limelight', monospace;
+}
+
 $spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35);
 $sides: (top, bottom, left, right);
 
