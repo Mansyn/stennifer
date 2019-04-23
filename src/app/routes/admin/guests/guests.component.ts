@@ -15,19 +15,22 @@ import * as moment from 'moment'
 export class GuestsComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>()
 
-  userProfiles: UserProfile[] = []
-  today: moment.Moment = moment()
+  userProfiles: UserProfile[]
+  today: moment.Moment
 
   constructor(
     public auth: AuthService,
-    public profileService: ProfileService) { }
+    public profileService: ProfileService) {
+    this.userProfiles = []
+    this.today = moment()
+  }
 
   ngOnInit() {
     const users$ = this.auth.getAllUsers()
     const profiles$ = this.profileService.getProfiles()
 
     combineLatest(users$, profiles$, (_users, _profiles) => {
-
+      this.userProfiles = []
       for (let _user of _users) {
         let _profile = _profiles.find(p => p.user_uid == _user.uid)
         let userProfile = UserUtils.mapToUserProfile(_user, _profile)

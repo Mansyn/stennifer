@@ -2,6 +2,7 @@
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
+@import 'fonts';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -63,7 +64,8 @@ img:focus,
 }
 
 .mat-card-title {
-  font-family: 'Limelight', monospace;
+  font-family: 'Parisish', monospace;
+  font-weight: bold;
 }
 
 $spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35);

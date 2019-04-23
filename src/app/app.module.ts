@@ -17,7 +17,9 @@ import {
   MatMenuModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatSnackBarModule, MatToolbarModule
+  MatSnackBarModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material'
 import { SlideshowModule } from 'ng-simple-slideshow'
 import { NgxImageGalleryModule } from 'ngx-image-gallery'
@@ -85,6 +87,7 @@ import { PhotosComponent } from './routes/photos/photos.component'
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatTooltipModule,
     PipesModule
   ],
   providers: [

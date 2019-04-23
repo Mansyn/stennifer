@@ -9,26 +9,33 @@
   padding-top: 60px;
 }
 
-h1 {
-  font-family: 'Fascinate Inline', cursive;
-  font-size: 72px;
-  line-height: 72px;
+.headline {
   margin: 15px 0;
+
+  h1 {
+    font-family: 'Fascinate Inline', cursive;
+    font-size: 72px;
+    line-height: 72px;
+  }
 }
 
+
 h2 {
-  font-family: 'Limelight', monospace;
+  font-family: 'Parisish';
+  font-weight: bold;
   font-size: 28px;
   line-height: 28px;
   margin: 15px 0 25px;
 }
 
-p {
-  font-size: 18px;
-}
-
 .hr {
-  padding-top: 50px;
+  padding: 30px 60px;
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .header-start {
@@ -52,12 +59,17 @@ p {
   }
 
   .info {
-    padding: 40px 0;
+    margin: 40px 0 80px 0;
 
-    h3 {
-      font-family: 'Fascinate Inline', cursive;
-      font-weight: bold;
-      font-size: 28px;
+    h1 {
+      font-family: 'Parisish';
+      font-size: 60px;
+      line-height: 60px;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 10px 5px;
     }
   }
 }

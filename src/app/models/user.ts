@@ -19,7 +19,7 @@ export interface Profile {
     uid: string
     user_uid: string
     additional: number
-    birthday: string
+    additionalKids: number
     acceptDate: number
 }
 
@@ -31,6 +31,6 @@ export interface UserProfile {
     photoURL: string
     roles: Roles
     additional: number
-    birthday: moment.Moment
+    additionalKids: number
     acceptDate: number
 }

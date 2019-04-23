@@ -25,6 +25,8 @@ export class CountdownComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.makeTimer();
+
     setInterval(() => {
       this.makeTimer();
     }, 1000)

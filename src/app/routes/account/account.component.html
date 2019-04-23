@@ -58,14 +58,12 @@
                         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-evenly stretch"
                           fxLayoutGap="25px">
                           <mat-form-field fxFlex="50">
-                            <input matInput placeholder="Additional Guests" type="number" name="profileAdditional" min=0
+                            <input matInput placeholder="Guests Over 21" type="number" name="profileAdditional" min=0
                               [(ngModel)]="userprofile.additional">
                           </mat-form-field>
                           <mat-form-field fxFlex="50">
-                            <input matInput [matDatepicker]="picker" placeholder="Birthday" name="birthday"
-                              [(ngModel)]="userprofile.birthday">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
+                            <input matInput placeholder="Guests Under 21" type="number" name="profileAdditionalKids"
+                              min=0 [(ngModel)]="userprofile.additionalKids">
                           </mat-form-field>
                         </div>
                         <div class="m-t-15">

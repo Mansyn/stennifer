@@ -11,7 +11,7 @@ export default class UserUtils {
       photoURL: user.photoURL,
       roles: user.roles,
       additional: profile ? profile.additional : 0,
-      birthday: profile ? moment(profile.birthday) : moment(),
+      additionalKids: profile ? profile.additionalKids : 0,
       acceptDate: profile ? profile.acceptDate : 0
     };
 

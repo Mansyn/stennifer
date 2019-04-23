@@ -8,7 +8,6 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 
 import { Subject, combineLatest } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
-import * as moment from 'moment'
 
 import { AuthService } from 'src/app/core/auth.service'
 import { Profile, UserProfile, User } from 'src/app/models/user'
@@ -29,14 +28,14 @@ export class AccountComponent implements OnInit, OnDestroy {
   form: FormGroup
   newProfile = {
     additional: 0,
-    acceptDate: -1
+    additionalKids: 0
   }
   userRef: User
   phoneNumberRef = ''
   emailRef = ''
   nameRef = ''
 
-  profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, birthday: '' }
+  profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, additionalKids: -1 }
   userprofile: UserProfile
 
   constructor(
@@ -74,7 +73,7 @@ export class AccountComponent implements OnInit, OnDestroy {
           if (_profile.user_uid === _user.uid) {
             this.profile = _profile
             this.userprofile.additional = _profile.additional
-            this.userprofile.birthday = moment(_profile.birthday)
+            this.userprofile.additionalKids = _profile.additionalKids
             this.userprofile.acceptDate = _profile.acceptDate
           }
         }
@@ -95,24 +94,24 @@ export class AccountComponent implements OnInit, OnDestroy {
     delete this.profile.uid
     this.profile.user_uid = this.userprofile.uid
     this.profile.additional = this.newProfile.additional
-    this.profile.birthday = this.newProfile['birthday'].format('MM-DD-YYYY')
+    this.profile.additionalKids = this.newProfile.additionalKids
     this.profile.acceptDate = new Date().getTime()
     this.profileService.addProfile(this.profile)
   }
 
   onUpdate() {
     this.profile.additional = this.userprofile.additional
-    this.profile.birthday = this.userprofile.birthday.format('MM-DD-YYYY')
+    this.profile.additionalKids = this.userprofile.additionalKids
     this.profile.acceptDate = new Date().getTime()
     this.profileService.updateProfile(this.profile)
   }
 
   disableUpdate() {
-    if (this.userprofile.birthday == null || this.profile.additional == null) {
+    if (this.userprofile.additionalKids == null || this.profile.additional == null) {
       return true
     } else {
       return this.profile.additional == this.userprofile.additional &&
-        this.profile.birthday == this.userprofile.birthday.format('MM-DD-YYYY')
+        this.profile.additionalKids == this.userprofile.additionalKids
     }
   }
 

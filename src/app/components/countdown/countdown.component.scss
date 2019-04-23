@@ -6,7 +6,7 @@
 
   >div {
     width: 100%;
-    padding: 80px;
+    padding: 0px 80px 80px 80px;
     font-size: 40px;
     min-height: 260px;
 
@@ -19,9 +19,10 @@
 
 span {
   display: block;
-  font-family: 'Limelight', monospace;
-  font-size: 25px;
-  color: white;
+  font-family: 'Parisish', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 28px;
   padding: 15px 0;
 }
 
@@ -32,15 +33,15 @@ span {
 
 .hours {
   font-size: 120px;
-  color: mat-color($stennifer-accent, 600);
+  color: mat-color($stennifer-accent, 800);
 }
 
 .minutes {
   font-size: 120px;
-  color: mat-color($stennifer-accent, 500);
+  color: mat-color($stennifer-accent, 800);
 }
 
 .seconds {
   font-size: 120px;
-  color: mat-color($stennifer-accent, 400);
+  color: mat-color($stennifer-accent, 800);
 }
