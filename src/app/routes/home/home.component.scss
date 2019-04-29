@@ -1,12 +1,15 @@
 @import '../../../styles';
 
-.header {
-  background-color: mat-color($stennifer-primary, default);
-}
 
 .header-section {
   text-align: center;
   padding-top: 60px;
+  background-color: mat-color($stennifer-accent, 50);
+  background: linear-gradient(mat-color($stennifer-accent, 500) 0%, mat-color($stennifer-primary, default) 100%);
+}
+
+.header-headline {
+  color: mat-color($stennifer-accent, 50)
 }
 
 .headline {
@@ -44,7 +47,6 @@ h2 {
 }
 
 .museum {
-  background-color: #fff;
 
   a:link,
   a:visited,
@@ -56,6 +58,8 @@ h2 {
   .images {
     display: block;
     height: 500px;
+    border-top: 2px solid mat-color($stennifer-primary, default);
+    border-bottom: 2px solid mat-color($stennifer-primary, default);
   }
 
   .info {

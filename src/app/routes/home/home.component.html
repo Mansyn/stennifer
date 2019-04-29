@@ -1,4 +1,4 @@
-<div class="header">
+<div>
   <div class="header-section">
     <div class="header-headline">
       <h2>We are getting married!</h2>
@@ -9,11 +9,11 @@
       </div>
       <h2>October 5, 2019</h2>
     </div>
+    <div class="hr">
+      <img src="assets/hr1.png" />
+    </div>
+    <wedding-countdown></wedding-countdown>
   </div>
-  <div class="hr">
-    <img src="assets/hr1.png" />
-  </div>
-  <wedding-countdown></wedding-countdown>
   <div class="museum" fxLayout="column" fxLayoutAlign="start stretch">
     <div class="images">
       <slideshow [imageUrls]="imageUrls" [lazyLoad]="imageUrls?.length > 1"></slideshow>
@@ -21,26 +21,34 @@
     <div fxLayout="row" class="info">
       <div fxFlex="90" fxFlex.gt-xs="80" fxFlex.gt-md="66" fxFlexOffset="5" fxFlexOffset.gt-xs="10"
         fxFlexOffset.gt-md="17">
-        <h1>When</h1>
-        <p>October 5th <br />Doors Open: 6:00 PM<br />Ceremony: 6:30 PM</p>
-        <h1>Where</h1>
-        <p>
-          <a href="https://www.americansignmuseum.org/" target="_blank">The American Sign Museum</a>
-          <a mat-icon-button href="https://goo.gl/maps/aZQVtsmYQrE2" target="_blank" matTooltip="Show on Google Maps"
-            matTooltipPosition="after" aria-label="Show on Google Maps">
-            <mat-icon aria-label="map">map</mat-icon>
-          </a>
-        </p>
-        <h1>Directions</h1>
-        <p>To access the museum from north of Cincinnati, take I-75 South to exit 3, Hopple Street. Turn right at the
-          exit. Then turn right onto Colerain Avenue. Then take a left on Monmouth Avenue. The museum’s parking lot is
-          at the first entrance on the right, through the black gate.</p>
-        <p>To access the museum from south of Cincinnati, take I-75 North to exit 3, Hopple Street. Turn left at the
-          exit. Then turn right onto Colerain Avenue. Then take a left on Monmouth Avenue. The museum’s parking lot is
-          at the first entrance on the right, through the black gate.</p>
-        <p>To access the museum from downtown Cincinnati, take Central Parkway north. Turn left at Monmouth Avenue.
-          Continue on Monmouth, through Colerain Avenue. The museum’s parking lot is at the first entrance on the right,
-          through the black gate.</p>
+        <mat-card>
+          <mat-card-content>
+            <h1>When</h1>
+            <p>October 5th <br />Doors Open: 6:00 PM<br />Ceremony: 6:30 PM</p>
+            <h1>Where</h1>
+            <p>
+              <a href="https://www.americansignmuseum.org/" target="_blank">The American Sign Museum</a>
+              <a mat-icon-button href="https://goo.gl/maps/aZQVtsmYQrE2" target="_blank"
+                matTooltip="Show on Google Maps" matTooltipPosition="after" aria-label="Show on Google Maps">
+                <mat-icon aria-label="map">map</mat-icon>
+              </a>
+            </p>
+            <h1>Directions</h1>
+            <p>To access the museum from north of Cincinnati, take I-75 South to exit 3, Hopple Street. Turn right at
+              the
+              exit. Then turn right onto Colerain Avenue. Then take a left on Monmouth Avenue. The museum’s parking lot
+              is
+              at the first entrance on the right, through the black gate.</p>
+            <p>To access the museum from south of Cincinnati, take I-75 North to exit 3, Hopple Street. Turn left at the
+              exit. Then turn right onto Colerain Avenue. Then take a left on Monmouth Avenue. The museum’s parking lot
+              is
+              at the first entrance on the right, through the black gate.</p>
+            <p>To access the museum from downtown Cincinnati, take Central Parkway north. Turn left at Monmouth Avenue.
+              Continue on Monmouth, through Colerain Avenue. The museum’s parking lot is at the first entrance on the
+              right,
+              through the black gate.</p>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>
