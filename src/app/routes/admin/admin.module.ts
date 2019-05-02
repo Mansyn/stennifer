@@ -32,6 +32,7 @@ import { UsersComponent } from './users/users.component'
 import { UserPhoneDialog } from './users/users.component'
 import { UserRoleDialog } from './users/dialogs/user-role.component'
 import { GuestsComponent } from './guests/guests.component'
+import { PhotosComponent } from './photos/photos.component'
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { GuestsComponent } from './guests/guests.component'
     UsersComponent,
     UserRoleDialog,
     UserPhoneDialog,
-    GuestsComponent
+    GuestsComponent,
+    PhotosComponent
   ],
   entryComponents: [
     UserPhoneDialog,

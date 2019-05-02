@@ -4,13 +4,16 @@ import { Routes, RouterModule } from '@angular/router'
 import { AdminComponent } from './admin.component'
 import { UsersComponent } from './users/users.component'
 import { GuestsComponent } from './guests/guests.component'
+import { PhotosComponent } from './photos/photos.component'
 import { AdminGuard } from 'src/app/core/admin.guard'
 import { EditorGuard } from 'src/app/core/editor.guard'
 
 const routes: Routes = [
     { path: '', component: AdminComponent, canActivate: [EditorGuard] },
+    { path: 'admin', component: AdminComponent, canActivate: [EditorGuard] },
     { path: 'users', component: UsersComponent, canActivate: [AdminGuard] },
     { path: 'guests', component: GuestsComponent, canActivate: [EditorGuard] },
+    { path: 'photos', component: PhotosComponent, canActivate: [EditorGuard] },
 ];
 
 @NgModule({

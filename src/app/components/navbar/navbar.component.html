@@ -18,16 +18,10 @@
         <span class="hide-small m-l-5">Photos</span>
       </span>
     </a>
-    <a mat-button *ngIf="canEdit" [routerLink]="['/admin/guests']">
+    <a mat-button *ngIf="canEdit" [routerLink]="['/admin']">
       <span class="mat-button-wrapper">
-        <mat-icon aria-label="Guests">group</mat-icon>
-        <span class="hide-small m-l-5">Guests</span>
-      </span>
-    </a>
-    <a mat-button *ngIf="canDelete" [routerLink]="['/admin/users']">
-      <span class="mat-button-wrapper">
-        <mat-icon aria-label="Users">recent_actors</mat-icon>
-        <span class="hide-small m-l-5">Users</span>
+        <mat-icon aria-label="Guests">code</mat-icon>
+        <span class="hide-small m-l-5">Admin</span>
       </span>
     </a>
     <span class="spacer"></span>

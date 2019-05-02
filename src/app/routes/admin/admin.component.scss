@@ -1,1 +1,19 @@
+@import '../../../styles';
 
+:host>div {
+  margin-bottom: 45px;
+}
+
+header {
+  text-align: center;
+  background-color: mat-color($stennifer-accent, 50);
+  margin-bottom: 45px;
+
+  h1 {
+    margin: 30px 0;
+    font-family: 'Parisish';
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+  }
+}

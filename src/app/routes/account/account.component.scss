@@ -1,5 +1,9 @@
 @import '~@angular/material/theming';
 
+:host>div {
+  margin: 45px 0;
+}
+
 .mat-card-avatar .mat-icon {
   width: 40px;
   height: 40px;
