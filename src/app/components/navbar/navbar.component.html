@@ -18,12 +18,17 @@
         <span class="hide-small m-l-5">Photos</span>
       </span>
     </a>
-    <a mat-button *ngIf="canEdit" [routerLink]="['/admin']">
+    <a mat-button *ngIf="canEdit" [matMenuTriggerFor]="menu">
       <span class="mat-button-wrapper">
         <mat-icon aria-label="Guests">code</mat-icon>
         <span class="hide-small m-l-5">Admin</span>
       </span>
     </a>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/admin/guests']">Guests</button>
+      <button mat-menu-item [routerLink]="['/admin/users']" *ngIf="canDelete">Users</button>
+      <button mat-menu-item [routerLink]="['/admin/photos']" *ngIf="canDelete">Photos</button>
+    </mat-menu>
     <span class="spacer"></span>
     <span class="hide-small"><span *ngIf="auth.user$ | async; then accountBig else loginBig"></span></span>
     <span class="show-small"><span *ngIf="auth.user$ | async; then accountSmall else loginSmall"></span></span>

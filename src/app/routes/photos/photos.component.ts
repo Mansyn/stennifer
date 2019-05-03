@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from "ngx-image-gallery"
 
-
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',
@@ -32,58 +31,64 @@ export class PhotosComponent implements OnInit {
   ngOnInit() {
     this.images = [
       {
-        url: "https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/baseball.jpg?alt=media&token=7d6d7b63-d33c-4b5b-9819-a3e9bf036a62",
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fbaseball.jpg?alt=media&token=6daf0d10-dad4-4a43-a8ec-8817d7548336',
         altText: 'At the Dragons game',
         title: 'At the Dragons game',
-        thumbnailUrl: "https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/baseball_thmb.jpg?alt=media&token=f1909123-353c-473b-a08b-7a8ce0d36e55"
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fbaseball_thmb.jpg?alt=media&token=6122f7c5-1423-45a4-80a4-be1e357a8183'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/engagement-ring.jpg?alt=media&token=e0b29f76-5d9e-4d3e-904a-09727351b449',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement-ring.jpg?alt=media&token=ed34405b-a88f-44c0-837e-89b1cb1ecb23',
         altText: 'The engagement ring',
         title: 'The engagement ring',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/engagement-ring_thmb.jpg?alt=media&token=8f2d40bc-b5b9-463d-88d4-9f36228e92f8'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement-ring_thmb.jpg?alt=media&token=abe867c7-968a-402e-b9a8-1bb772a749e9'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/engagement.jpg?alt=media&token=90fc9a79-3bce-47b7-8acf-a0bf1db532b1',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement.jpg?alt=media&token=274e36d3-a8cd-4c35-8ea1-e43cefd73cd0',
         altText: 'On the patio at House of Cards',
         title: 'On the patio at House of Cards',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/engagement2_thmb.jpg?alt=media&token=d4dba261-1774-422f-88e2-eabfbcef8011'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement_thmb.jpg?alt=media&token=b0fe0c4d-1506-498d-933b-73cb392589e6'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/engagement2.jpg?alt=media&token=e8f09c66-6b46-4be3-90e2-7b08e12e47ce',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement2.jpg?alt=media&token=f6af6222-3ff7-4bea-8606-01b7223cf9df',
         altText: 'On the patio at House of Cards',
         title: 'On the patio at House of Cards',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/engagement2_thmb.jpg?alt=media&token=d4dba261-1774-422f-88e2-eabfbcef8011'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement2_thmb.jpg?alt=media&token=f3cb0adf-c755-46ee-ab82-94d4390e7fd6'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/halloween-pose.jpg?alt=media&token=343a4c0f-761d-4a94-b5ba-da6d846160c2',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fhalloween-pose.jpg?alt=media&token=7771c845-a85c-4e94-85b4-4144bbe57628',
         altText: 'At the Halloween party at Rhinegeist',
         title: 'At the Halloween party at Rhinegeist',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/halloween-pose_thmb.jpg?alt=media&token=25e75248-2665-43a4-8fcf-a316110ac5a8'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fhalloween-pose_thmb.jpg?alt=media&token=46c910d9-923d-412f-bda7-8af338ccf8a1'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/halloween.jpg?alt=media&token=995e1697-e155-4f6b-a46f-47a93be95a92',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fhalloween.jpg?alt=media&token=1a121e4e-6279-412f-a47f-5d51b1f1265b',
         altText: 'At the Halloween party at Rhinegeist',
         title: 'At the Halloween party at Rhinegeist',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/halloween_thmb.jpg?alt=media&token=2862d929-f2cc-4105-b2c5-3aed7af08c0d'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fhalloween_thmb.jpg?alt=media&token=4c327894-cca3-43cb-b708-cb31a5d74681'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/kiss.jpg?alt=media&token=f3c9d85a-f2ab-4538-88d0-51377f386b69',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fkiss.jpg?alt=media&token=ebc35149-497d-4457-9695-1569338202af',
         altText: 'Our first kiss after getting engaged',
         title: 'Our first kiss after getting engaged',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/kiss_thmb.jpg?alt=media&token=75b549c1-0ca3-4b50-8458-a2627b984f8f'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fkiss_thmb.jpg?alt=media&token=9e7305d6-fe8f-4a9a-9462-b6ca350b20d0'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/nashville.jpg?alt=media&token=e1de3ab0-9205-4fcd-b387-800b6a4c6bf9',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fkiss_thmb.jpg?alt=media&token=9e7305d6-fe8f-4a9a-9462-b6ca350b20d0',
         altText: 'Our favorite waitress in Nashville',
         title: 'Our favorite waitress in Nashville',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/nashville_thmb.jpg?alt=media&token=6e23ef48-d117-4cf2-a041-50c1970b9014'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fnashville_thmb.jpg?alt=media&token=3272fdd5-77bb-4d1f-a616-b9536636de92'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/neworleans.jpg?alt=media&token=909362d1-dda1-4160-990b-3716a4168700',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fneworleans-candle.jpg?alt=media&token=bbae3155-34dd-4dc5-b56f-139d74a1f130',
+        altText: 'At a celebration in New Orleans',
+        title: 'At a celebration in New Orleans',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fneworleans-candle_thmb.jpg?alt=media&token=205f6179-c07d-4c6b-9c89-9ec2eafa9e15'
+      },
+      {
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fneworleans.jpg?alt=media&token=eb657ccc-f361-45ca-a847-6aee2f775fc3',
         altText: 'Having drinks in New Orleans',
         title: 'Having drinks in New Orleans',
-        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/neworleans_thmb.jpg?alt=media&token=dfca2722-3301-47fd-a443-06221fed3d69'
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fneworleans_thmb.jpg?alt=media&token=4471a870-bed2-4902-be9c-94d9d13afc02'
       }
     ]
   }
