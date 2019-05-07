@@ -9,7 +9,7 @@ export const environment = {
     authDomain: "stennifer-0.firebaseapp.com",
     databaseURL: "https://stennifer-0.firebaseio.com",
     projectId: "stennifer-0",
-    storageBucket: "",
+    storageBucket: "gs://stennifer-0.appspot.com",
     messagingSenderId: "946338578328"
   }
 };

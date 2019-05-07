@@ -20,7 +20,7 @@ export class CountdownComponent implements OnInit {
   seconds: number
 
   constructor() {
-    this.weddingDateString = "2019-10-05"
+    this.weddingDateString = "2019-07-13"
     this.weddingTimeString = "18:00";
   }
 

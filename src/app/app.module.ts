@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
+import { AngularFireStorageModule } from '@angular/fire/storage'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {
@@ -66,6 +67,7 @@ import { PhotosComponent } from './routes/photos/photos.component'
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule, ReactiveFormsModule,
     AppRoutingModule,
     BrowserModule,
