@@ -2,22 +2,26 @@
   margin: 45px 0;
 }
 
-form {
+mat-card {
+  max-width: 600px;
 
-  mat-card-content {
-    padding: 0 16px;
+  form {
 
-    .mat-form-field {
-      width: 100%;
+    mat-card-content {
+      padding: 0 16px;
+
+      .mat-form-field {
+        width: 100%;
+      }
+
     }
 
-  }
+    .or {
+      line-height: 36px;
+    }
 
-  .spacer {
-    height: 20px;
-  }
-
-  button {
-    width: 90px;
+    button {
+      width: 90px;
+    }
   }
 }

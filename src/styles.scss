@@ -64,6 +64,11 @@ img:focus,
   font-weight: bold;
 }
 
+.mat-card {
+  background-color: mat-color($stennifer-accent, 50);
+  color: mat-color($stennifer-accent, 500);
+}
+
 .mat-card-title {
   font-family: 'Parisish', monospace;
   font-weight: bold;

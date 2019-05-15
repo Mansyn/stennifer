@@ -1,4 +1,10 @@
+@import '../../../styles';
+
 .heavy {
   font-family: 'Parisish', monospace;
   font-size: 1.3em;
+}
+
+span {
+  color: mat-color($stennifer-accent, 50);
 }
