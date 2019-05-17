@@ -18,6 +18,7 @@ import {
   MatMenuModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
   MatToolbarModule,
   MatTooltipModule
@@ -87,6 +88,7 @@ import { PhotosComponent } from './routes/photos/photos.component'
     MatMenuModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatSlideToggleModule,
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,

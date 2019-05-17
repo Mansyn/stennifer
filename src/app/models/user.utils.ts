@@ -12,7 +12,8 @@ export default class UserUtils {
       roles: user.roles,
       additional: profile ? profile.additional : 0,
       additionalKids: profile ? profile.additionalKids : 0,
-      acceptDate: profile ? profile.acceptDate : 0
+      acceptDate: profile ? profile.acceptDate : 0,
+      decline: profile ? (profile.decline) : false
     };
 
     return userProfile;

@@ -28,14 +28,15 @@ export class AccountComponent implements OnInit, OnDestroy {
   form: FormGroup
   newProfile = {
     additional: 0,
-    additionalKids: 0
+    additionalKids: 0,
+    decline: false
   }
   userRef: User
   phoneNumberRef = ''
   emailRef = ''
   nameRef = ''
 
-  profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, additionalKids: -1 }
+  profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, additionalKids: -1, decline: false }
   userprofile: UserProfile
 
   constructor(
@@ -61,7 +62,8 @@ export class AccountComponent implements OnInit, OnDestroy {
           phoneNumber: _user.phoneNumber,
           photoURL: _user.photoURL,
           additional: 0,
-          acceptDate: -1
+          acceptDate: -1,
+          decline: false
         } as UserProfile
 
         this.userRef = this.userprofile
@@ -74,7 +76,8 @@ export class AccountComponent implements OnInit, OnDestroy {
             this.profile = _profile
             this.userprofile.additional = _profile.additional
             this.userprofile.additionalKids = _profile.additionalKids
-            this.userprofile.acceptDate = _profile.acceptDate
+            this.userprofile.acceptDate = _profile.acceptDate,
+              this.userprofile.decline = _profile.decline
           }
         }
       } else {
@@ -86,8 +89,12 @@ export class AccountComponent implements OnInit, OnDestroy {
       .subscribe()
   }
 
-  displayDate(dateTime) {
-    return (new Date(dateTime)).toDateString()
+  displayDate() {
+    if (this.userprofile.acceptDate == -1) {
+      return ''
+    } else {
+      return 'Last Updated: ' + (new Date(this.userprofile.acceptDate)).toDateString()
+    }
   }
 
   onAdd() {
@@ -96,6 +103,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.profile.additional = this.newProfile.additional
     this.profile.additionalKids = this.newProfile.additionalKids
     this.profile.acceptDate = new Date().getTime()
+    this.profile.decline = this.newProfile.decline
     this.profileService.addProfile(this.profile)
   }
 
@@ -103,7 +111,22 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.profile.additional = this.userprofile.additional
     this.profile.additionalKids = this.userprofile.additionalKids
     this.profile.acceptDate = new Date().getTime()
+    this.profile.decline = this.userprofile.decline
     this.profileService.updateProfile(this.profile)
+  }
+
+  toggleDecline() {
+    if (this.userprofile.acceptDate == -1) {
+      this.newProfile.additional = 0
+      this.newProfile.additionalKids = 0
+      this.newProfile.decline = true
+      this.onAdd()
+    } else {
+      this.userprofile.decline = !this.profile.decline
+      this.userprofile.additional = 0
+      this.userprofile.additionalKids = 0
+      this.onUpdate()
+    }
   }
 
   disableUpdate() {

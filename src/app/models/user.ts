@@ -21,6 +21,7 @@ export interface Profile {
     additional: number
     additionalKids: number
     acceptDate: number
+    decline: boolean
 }
 
 export interface UserProfile {
@@ -33,4 +34,5 @@ export interface UserProfile {
     additional: number
     additionalKids: number
     acceptDate: number
+    decline: boolean
 }
