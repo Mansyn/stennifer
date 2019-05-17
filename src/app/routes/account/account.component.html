@@ -82,8 +82,8 @@
                         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-evenly stretch"
                           fxLayoutGap="25px">
                           <mat-form-field fxFlex="50">
-                            <input matInput placeholder="Additional Guests" type="number" name="newprofileAdditional"
-                              min=0 [(ngModel)]="newProfile.additional">
+                            <input matInput placeholder="Guests Over 21" type="number" name="newprofileAdditional" min=0
+                              [(ngModel)]="newProfile.additional">
                           </mat-form-field>
                           <mat-form-field fxFlex="50">
                             <input matInput placeholder="Guests Under 21" type="number" name="newprofileAdditionalKids"
@@ -93,8 +93,7 @@
                         <div class="m-t-15">
                           <div fxLayout="row" fxLayoutAlign="start center">
                             <span class="spacer"></span>
-                            <button mat-raised-button type="submit" color="primary"
-                              [disabled]="!newProfile.birthday">Save</button>
+                            <button mat-raised-button type="submit" color="primary">Save</button>
                           </div>
                         </div>
                       </form>
