@@ -13,7 +13,8 @@ export default class UserUtils {
       additional: profile ? profile.additional : 0,
       additionalKids: profile ? profile.additionalKids : 0,
       acceptDate: profile ? profile.acceptDate : 0,
-      decline: profile ? (profile.decline) : false
+      decline: profile ? profile.decline : false,
+      notes: profile ? profile.notes : ''
     };
 
     return userProfile;

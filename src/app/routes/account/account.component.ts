@@ -29,14 +29,23 @@ export class AccountComponent implements OnInit, OnDestroy {
   newProfile = {
     additional: 0,
     additionalKids: 0,
-    decline: false
+    decline: false,
+    notes: ''
   }
   userRef: User
   phoneNumberRef = ''
   emailRef = ''
   nameRef = ''
 
-  profile: Profile = { uid: '', user_uid: '', additional: -1, acceptDate: -1, additionalKids: -1, decline: false }
+  profile: Profile = {
+    uid: '',
+    user_uid: '',
+    additional: -1,
+    acceptDate: -1,
+    additionalKids: -1,
+    decline: false,
+    notes: ''
+  }
   userprofile: UserProfile
 
   constructor(
@@ -63,7 +72,8 @@ export class AccountComponent implements OnInit, OnDestroy {
           photoURL: _user.photoURL,
           additional: 0,
           acceptDate: -1,
-          decline: false
+          decline: false,
+          notes: ''
         } as UserProfile
 
         this.userRef = this.userprofile
@@ -77,7 +87,8 @@ export class AccountComponent implements OnInit, OnDestroy {
             this.userprofile.additional = _profile.additional
             this.userprofile.additionalKids = _profile.additionalKids
             this.userprofile.acceptDate = _profile.acceptDate,
-              this.userprofile.decline = _profile.decline
+              this.userprofile.decline = _profile.decline,
+              this.userprofile.notes = _profile.notes
           }
         }
       } else {
@@ -104,6 +115,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.profile.additionalKids = this.newProfile.additionalKids
     this.profile.acceptDate = new Date().getTime()
     this.profile.decline = this.newProfile.decline
+    this.profile.notes = this.newProfile.notes
     this.profileService.addProfile(this.profile)
   }
 
@@ -112,6 +124,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.profile.additionalKids = this.userprofile.additionalKids
     this.profile.acceptDate = new Date().getTime()
     this.profile.decline = this.userprofile.decline
+    this.profile.notes = this.userprofile.notes
     this.profileService.updateProfile(this.profile)
   }
 
@@ -119,22 +132,33 @@ export class AccountComponent implements OnInit, OnDestroy {
     if (this.userprofile.acceptDate == -1) {
       this.newProfile.additional = 0
       this.newProfile.additionalKids = 0
+      this.newProfile.notes = ''
       this.newProfile.decline = true
       this.onAdd()
     } else {
       this.userprofile.decline = !this.profile.decline
       this.userprofile.additional = 0
       this.userprofile.additionalKids = 0
+      this.userprofile.notes = ''
       this.onUpdate()
     }
   }
 
   disableUpdate() {
-    if (this.userprofile.additionalKids == null || this.profile.additional == null) {
+    if (this.userprofile.additionalKids == null || this.userprofile.additional == null || this.userprofile.notes == '') {
       return true
     } else {
       return this.profile.additional == this.userprofile.additional &&
-        this.profile.additionalKids == this.userprofile.additionalKids
+        this.profile.additionalKids == this.userprofile.additionalKids &&
+        this.profile.notes == this.userprofile.notes
+    }
+  }
+
+  disableAdd() {
+    if (this.newProfile.additionalKids == null || this.newProfile.additional == null || this.newProfile.notes == '') {
+      return true
+    } else {
+      return false
     }
   }
 

@@ -66,6 +66,12 @@
                               min=0 [(ngModel)]="userprofile.additionalKids">
                           </mat-form-field>
                         </div>
+                        <div class="notes">
+                          <mat-form-field>
+                            <textarea matInput placeholder="Notes" name="profileNotes"
+                              [(ngModel)]="userprofile.notes"></textarea>
+                          </mat-form-field>
+                        </div>
                         <div class="m-t-15">
                           <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center">
                             <span class="spacer"></span>
@@ -90,10 +96,17 @@
                               min=0 [(ngModel)]="newProfile.additionalKids">
                           </mat-form-field>
                         </div>
+                        <div class="notes">
+                          <mat-form-field>
+                            <textarea matInput placeholder="Notes" name="newprofileNotes"
+                              [(ngModel)]="newProfile.notes"></textarea>
+                          </mat-form-field>
+                        </div>
                         <div class="m-t-15">
                           <div fxLayout="row" fxLayoutAlign="start center">
                             <span class="spacer"></span>
-                            <button mat-raised-button type="submit" color="primary">Save</button>
+                            <button mat-raised-button type="submit" color="primary"
+                              [disabled]="disableAdd()">Save</button>
                           </div>
                         </div>
                       </form>
