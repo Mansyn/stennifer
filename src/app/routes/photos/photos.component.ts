@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from 'ngx-image-gallery'
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage'
+import { AngularFireAuth } from '@angular/fire/auth'
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-photos',
@@ -16,7 +19,19 @@ export class PhotosComponent implements OnInit {
   // gallery images
   images: GALLERY_IMAGE[]
 
-  constructor() {
+  user: firebase.User
+  ref: AngularFireStorageReference
+  task: AngularFireUploadTask
+  uploadProgress: any
+
+  constructor(private afAuth: AngularFireAuth, private afStorage: AngularFireStorage) {
+
+    this.afAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        this.user = res
+      }
+    })
+
     this.conf = {
       imageBorderRadius: '6px',
       imageOffset: '50px',
@@ -170,6 +185,16 @@ export class PhotosComponent implements OnInit {
   // callback on user clicked delete button
   deleteImage(index) {
     console.info('Delete image at index ', index);
+  }
+
+  upload(event) {
+    const file = event.target.files[0]
+    this.ref = this.afStorage.ref('/uploads/' + this.user.uid + '/' + file.name)
+
+    this.task = this.ref.put(event.target.files[0])
+
+    this.uploadProgress = this.task.snapshotChanges()
+      .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100))
   }
 
 }

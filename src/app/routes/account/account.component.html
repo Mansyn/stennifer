@@ -124,7 +124,11 @@
             <mat-card>
               <mat-card-header>
                 <mat-card-title>Upload Photos</mat-card-title>
-                <mat-card-subtitle>Come back after the big day to upload and share your photos with us
+                <mat-card-subtitle>Go to Photos to upload images you've taken and would like to share with us <a
+                    mat-icon-button [routerLink]="['/photos']" matTooltip="Go to Photos" matTooltipPosition="after"
+                    aria-label="Go to Photos">
+                    <mat-icon aria-label="photo">photo</mat-icon>
+                  </a>
                 </mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>
