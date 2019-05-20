@@ -24,6 +24,7 @@ export class PhotosComponent implements OnInit {
       showImageTitle: true,
       reactToKeyboard: true,
       backdropColor: 'rgba(0, 0, 0, 0.87)',
+      thumbnailSize: 50,
       inline: true
     }
   }
@@ -31,10 +32,22 @@ export class PhotosComponent implements OnInit {
   ngOnInit() {
     this.images = [
       {
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fberry-steps.jpg?alt=media&token=53fcecc7-3c4f-4bd8-b5a6-947b89b157e7',
+        altText: 'Sitting in front of Berry',
+        title: 'Sitting in front of Berry',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fberry-steps_thmb.jpg?alt=media&token=0f73c03b-e39b-4625-bbf2-8ad6aa50b577'
+      },
+      {
         url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fbaseball.jpg?alt=media&token=6daf0d10-dad4-4a43-a8ec-8817d7548336',
         altText: 'At the Dragons game',
         title: 'At the Dragons game',
         thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fbaseball_thmb.jpg?alt=media&token=6122f7c5-1423-45a4-80a4-be1e357a8183'
+      },
+      {
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fall.jpg?alt=media&token=d4be1d68-f77c-4b85-8d0b-45a8da2fee37',
+        altText: 'Brady Bunch type picture in front of Berry',
+        title: 'Brady Bunch type picture in front of Berry',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fall_thmb.jpg?alt=media&token=6850ca1e-66ff-4a58-b352-58f90ae031d1'
       },
       {
         url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fengagement-ring.jpg?alt=media&token=ed34405b-a88f-44c0-837e-89b1cb1ecb23',
@@ -73,7 +86,7 @@ export class PhotosComponent implements OnInit {
         thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fkiss_thmb.jpg?alt=media&token=9e7305d6-fe8f-4a9a-9462-b6ca350b20d0'
       },
       {
-        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fkiss_thmb.jpg?alt=media&token=9e7305d6-fe8f-4a9a-9462-b6ca350b20d0',
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fnashville.jpg?alt=media&token=80240a64-9ad7-4a9d-83c0-2f2ac3abdfb1',
         altText: 'Our favorite waitress in Nashville',
         title: 'Our favorite waitress in Nashville',
         thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fnashville_thmb.jpg?alt=media&token=3272fdd5-77bb-4d1f-a616-b9536636de92'
@@ -89,6 +102,18 @@ export class PhotosComponent implements OnInit {
         altText: 'Having drinks in New Orleans',
         title: 'Having drinks in New Orleans',
         thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fneworleans_thmb.jpg?alt=media&token=4471a870-bed2-4902-be9c-94d9d13afc02'
+      },
+      {
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fstephen-girls.jpg?alt=media&token=5b8fb304-3eb3-4cbd-9ddc-2b9aa827d57f',
+        altText: 'Stephen and the girls',
+        title: 'Stephen and the girls',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fstephen-girls.jpg?alt=media&token=5b8fb304-3eb3-4cbd-9ddc-2b9aa827d57f'
+      },
+      {
+        url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fstephen-kids.jpg?alt=media&token=eb09896c-285a-447c-a4b0-ae9fed5354cf',
+        altText: 'Stephen and the kids',
+        title: 'Stephen and the kids',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fstephen-kids_thmb.jpg?alt=media&token=06b1497f-9238-4a14-9938-62c7c0606a6d'
       }
     ]
   }

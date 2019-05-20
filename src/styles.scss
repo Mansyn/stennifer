@@ -109,6 +109,14 @@ $sides: (top, bottom, left, right);
   display: none
 }
 
+.galleria {
+  .info-container {
+    .title.dark {
+      color: mat-color($stennifer-accent, 50) !important;
+    }
+  }
+}
+
 @media (max-width:720px) {
   .hide-small {
     display: none
