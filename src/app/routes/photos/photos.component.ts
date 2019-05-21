@@ -2,7 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from 'ngx-image-gallery'
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage'
 import { AngularFireAuth } from '@angular/fire/auth'
-import { map } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators'
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
+import { Photo } from 'src/app/models/photo'
+import { Observable } from 'rxjs';
+import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 
 @Component({
   selector: 'app-photos',
@@ -19,19 +23,28 @@ export class PhotosComponent implements OnInit {
   // gallery images
   images: GALLERY_IMAGE[]
 
+  private photosCollection: AngularFirestoreCollection<Photo>
+  photos$: Observable<Photo[]>
+  photos: Photo[]
+
+  public get uploads(): IMasonryGalleryImage[] {
+    return this.photos.map(m => <IMasonryGalleryImage>{
+      imageUrl: m.url
+    })
+  }
+
   user: firebase.User
   ref: AngularFireStorageReference
   task: AngularFireUploadTask
   uploadProgress: any
 
-  constructor(private afAuth: AngularFireAuth, private afStorage: AngularFireStorage) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private afStorage: AngularFireStorage
+  ) {
 
-    this.afAuth.authState.subscribe(res => {
-      if (res && res.uid) {
-        this.user = res
-      }
-    })
-
+    this.photos = []
     this.conf = {
       imageBorderRadius: '6px',
       imageOffset: '50px',
@@ -45,6 +58,18 @@ export class PhotosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.afAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        this.user = res
+        this.photosCollection = this.afs.collection<Photo>('photos', ref => ref.where('uid', '==', res.uid))
+        this.photos$ = this.photosCollection.valueChanges()
+
+        this.photos$.subscribe((photos) => {
+          this.photos = photos
+        })
+      }
+    })
+
     this.images = [
       {
         url: 'https://firebasestorage.googleapis.com/v0/b/stennifer-0.appspot.com/o/photos%2Fberry-steps.jpg?alt=media&token=53fcecc7-3c4f-4bd8-b5a6-947b89b157e7',
@@ -133,6 +158,38 @@ export class PhotosComponent implements OnInit {
     ]
   }
 
+  upload(event) {
+    const file = event.target.files[0]
+    this.ref = this.afStorage.ref('/uploads/' + this.user.uid + '/' + file.name)
+    this.task = this.ref.put(event.target.files[0])
+
+    this.uploadProgress = this.task.percentageChanges()
+
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.ref.getDownloadURL().subscribe(url => {
+          this.addPhoto(file.name, url)
+        });
+      })
+    ).subscribe()
+  }
+
+  addPhoto(fileName: string, url: string) {
+    const id = this.afs.createId()
+    const uid = this.user.uid
+    const photo: Photo = { id, uid, fileName, url }
+    this.photosCollection.doc(id).set(photo)
+  }
+
+  removePhoto(photo: Photo) {
+    this.afStorage.ref('/uploads/' + this.user.uid + '/' + photo.fileName).delete()
+    this.photosCollection.doc(photo.id).delete()
+  }
+
+  handleClick(image: IMasonryGalleryImage): void {
+    console.log(image)
+  }
+
   // METHODS
   // open gallery
   openGallery(index: number = 0) {
@@ -159,8 +216,6 @@ export class PhotosComponent implements OnInit {
     this.ngxImageGallery.prev();
   }
 
-  /**************************************************/
-
   // EVENTS
   // callback on gallery opened
   galleryOpened(index) {
@@ -186,15 +241,4 @@ export class PhotosComponent implements OnInit {
   deleteImage(index) {
     console.info('Delete image at index ', index);
   }
-
-  upload(event) {
-    const file = event.target.files[0]
-    this.ref = this.afStorage.ref('/uploads/' + this.user.uid + '/' + file.name)
-
-    this.task = this.ref.put(event.target.files[0])
-
-    this.uploadProgress = this.task.snapshotChanges()
-      .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100))
-  }
-
 }

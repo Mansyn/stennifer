@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore'
+import { Photo } from 'src/app/models/photo'
+import { Observable } from 'rxjs'
+import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 
 @Component({
   selector: 'app-photos',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotosComponent implements OnInit {
 
-  constructor() { }
+  private photosCollection: AngularFirestoreCollection<Photo>
+  photos$: Observable<Photo[]>
+  photos: Photo[]
+
+  public get uploads(): IMasonryGalleryImage[] {
+    return this.photos.map(m => <IMasonryGalleryImage>{
+      imageUrl: m.url
+    })
+  }
+
+  constructor(private afs: AngularFirestore) {
+    this.photos = []
+  }
 
   ngOnInit() {
+    this.photosCollection = this.afs.collection<Photo>('photos')
+    this.photos$ = this.photosCollection.valueChanges()
+
+    this.photos$.subscribe((photos) => {
+      this.photos = photos
+    })
   }
 
 }

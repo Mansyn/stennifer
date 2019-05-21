@@ -23,6 +23,7 @@ import {
 } from '@angular/material'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { AngularFireStorageModule } from '@angular/fire/storage'
+import { MasonryGalleryModule } from 'ngx-masonry-gallery'
 
 // app
 import { AdminRoutingModule } from './admin-routing.module'
@@ -41,7 +42,7 @@ import { PhotosComponent } from './photos/photos.component'
     CommonModule,
     FlexLayoutModule,
     FormsModule,
-    PipesModule,
+    MasonryGalleryModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -60,6 +61,7 @@ import { PhotosComponent } from './photos/photos.component'
     MatSortModule,
     MatTableModule,
     MatToolbarModule,
+    PipesModule,
     ReactiveFormsModule
   ],
   declarations: [

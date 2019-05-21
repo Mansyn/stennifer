@@ -7,12 +7,12 @@ export interface Roles {
 }
 
 export interface User {
-    uid: string;
-    displayName: string;
-    email: string;
-    phoneNumber: string;
-    photoURL: string;
-    roles: Roles;
+    uid: string
+    displayName: string
+    email: string
+    phoneNumber: string
+    photoURL: string
+    roles: Roles
 }
 
 export interface Profile {

@@ -25,6 +25,7 @@ import {
 } from '@angular/material'
 import { SlideshowModule } from 'ng-simple-slideshow'
 import { NgxImageGalleryModule } from 'ngx-image-gallery'
+import { MasonryGalleryModule } from 'ngx-masonry-gallery'
 
 import { environment } from '../environments/environment'
 
@@ -75,8 +76,7 @@ import { PhotosComponent } from './routes/photos/photos.component'
     BrowserAnimationsModule,
     CoreModule,
     FlexLayoutModule,
-    SlideshowModule,
-    NgxImageGalleryModule,
+    MasonryGalleryModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -92,7 +92,9 @@ import { PhotosComponent } from './routes/photos/photos.component'
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
-    PipesModule
+    NgxImageGalleryModule,
+    PipesModule,
+    SlideshowModule
   ],
   providers: [
     NotificationService,

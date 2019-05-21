@@ -1,3 +1,19 @@
-<p>
-  photos works!
-</p>
+<div fxLayout="row" fxLayoutAlign="center stretch">
+  <div fxFlex="90" fxFlex.gt-xs="80" fxFlex.gt-md="66" fxFlexOffset="5" fxFlexOffset.gt-xs="10" fxFlexOffset.gt-md="17">
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title>Uploaded Photos</mat-card-title>
+        <mat-card-subtitle>All photos uploaded by users</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        <div>
+          <ngx-masonry-gallery [width]='325' [images]='uploads'>
+          </ngx-masonry-gallery>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  <div fxFlex></div>
+</div>

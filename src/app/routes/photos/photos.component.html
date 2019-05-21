@@ -29,12 +29,16 @@
         <mat-card-subtitle>upload photos you'd like to share with us</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-        <div>
+        <div class="uploads">
           <label for="file">File </label>
           <input type="file" (change)="upload($event)" accept=".png,.jpg" />
-        </div>
-        <div>
-          <progress max="100" [value]="(uploadProgress | async)"></progress>
+          <div>
+            <progress max="100" [value]="(uploadProgress | async)"></progress>
+          </div>
+          <div>
+            <ngx-masonry-gallery [width]='325' [images]='uploads' (clickImage)="handleClick(image)">
+            </ngx-masonry-gallery>
+          </div>
         </div>
       </mat-card-content>
       <mat-card-footer>
