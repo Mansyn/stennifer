@@ -35,9 +35,13 @@
           <div>
             <progress max="100" [value]="(uploadProgress | async)"></progress>
           </div>
-          <div>
-            <ngx-masonry-gallery [width]='325' [images]='uploads' (clickImage)="handleClick(image)">
-            </ngx-masonry-gallery>
+          <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="10px grid">
+            <div *ngFor="let photo of photos$ | async" fxFlex="25">
+              <div class="container">
+                <img [src]="photo.url" />
+                <div class="hover" (click)="handleClick(photo)">X</div>
+              </div>
+            </div>
           </div>
         </div>
       </mat-card-content>

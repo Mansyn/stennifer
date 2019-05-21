@@ -5,8 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { finalize } from 'rxjs/operators'
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Photo } from 'src/app/models/photo'
-import { Observable } from 'rxjs';
-import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-photos',
@@ -15,7 +14,7 @@ import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 })
 export class PhotosComponent implements OnInit {
 
-  @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent;
+  @ViewChild(NgxImageGalleryComponent) ngxImageGallery: NgxImageGalleryComponent
 
   // gallery configuration
   conf: GALLERY_CONF
@@ -25,13 +24,6 @@ export class PhotosComponent implements OnInit {
 
   private photosCollection: AngularFirestoreCollection<Photo>
   photos$: Observable<Photo[]>
-  photos: Photo[]
-
-  public get uploads(): IMasonryGalleryImage[] {
-    return this.photos.map(m => <IMasonryGalleryImage>{
-      imageUrl: m.url
-    })
-  }
 
   user: firebase.User
   ref: AngularFireStorageReference
@@ -39,12 +31,10 @@ export class PhotosComponent implements OnInit {
   uploadProgress: any
 
   constructor(
-    private afAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private afStorage: AngularFireStorage
   ) {
-
-    this.photos = []
     this.conf = {
       imageBorderRadius: '6px',
       imageOffset: '50px',
@@ -63,10 +53,6 @@ export class PhotosComponent implements OnInit {
         this.user = res
         this.photosCollection = this.afs.collection<Photo>('photos', ref => ref.where('uid', '==', res.uid))
         this.photos$ = this.photosCollection.valueChanges()
-
-        this.photos$.subscribe((photos) => {
-          this.photos = photos
-        })
       }
     })
 
@@ -186,8 +172,8 @@ export class PhotosComponent implements OnInit {
     this.photosCollection.doc(photo.id).delete()
   }
 
-  handleClick(image: IMasonryGalleryImage): void {
-    console.log(image)
+  handleClick(photo: Photo) {
+    this.removePhoto(photo)
   }
 
   // METHODS

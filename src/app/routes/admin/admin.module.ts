@@ -23,7 +23,6 @@ import {
 } from '@angular/material'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { AngularFireStorageModule } from '@angular/fire/storage'
-import { MasonryGalleryModule } from 'ngx-masonry-gallery'
 
 // app
 import { AdminRoutingModule } from './admin-routing.module'
@@ -42,7 +41,6 @@ import { PhotosComponent } from './photos/photos.component'
     CommonModule,
     FlexLayoutModule,
     FormsModule,
-    MasonryGalleryModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
