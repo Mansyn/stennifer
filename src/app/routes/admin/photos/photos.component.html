@@ -6,9 +6,13 @@
         <mat-card-subtitle>All photos uploaded by users</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-        <div>
-          <ngx-masonry-gallery [width]='325' [images]='uploads'>
-          </ngx-masonry-gallery>
+        <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="10px grid">
+          <div *ngFor="let photo of photos$ | async" fxFlex="25">
+            <div class="container">
+              <img [src]="photo.url" />
+              <div class="hover"><img src="assets/goXU8.png" (click)="handleClick(photo)" /></div>
+            </div>
+          </div>
         </div>
       </mat-card-content>
       <mat-card-footer>
