@@ -7,7 +7,7 @@
       </mat-card-title-group>
       <mat-card-content>
         <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="10px grid">
-          <div *ngFor="let photo of photos$ | async" fxFlex="25">
+          <div *ngFor="let photo of photos$ | async" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
             <div class="container">
               <img [src]="photo.url" />
               <div class="hover"><img src="assets/goXU8.png" (click)="handleClick(photo)" /></div>
