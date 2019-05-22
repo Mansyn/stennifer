@@ -145,7 +145,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   disableUpdate() {
-    if (this.userprofile.additionalKids == null || this.userprofile.additional == null || this.userprofile.notes == '') {
+    if (this.userprofile.additionalKids == null || this.userprofile.additional == null) {
       return true
     } else {
       return this.profile.additional == this.userprofile.additional &&
@@ -155,7 +155,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   disableAdd() {
-    if (this.newProfile.additionalKids == null || this.newProfile.additional == null || this.newProfile.notes == '') {
+    if (this.newProfile.additionalKids == null || this.newProfile.additional == null) {
       return true
     } else {
       return false
