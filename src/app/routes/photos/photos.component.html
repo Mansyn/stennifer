@@ -39,7 +39,7 @@
             <div *ngFor="let photo of photos$ | async" fxFlex="25">
               <div class="container">
                 <img [src]="photo.url" />
-                <div class="hover" (click)="handleClick(photo)">X</div>
+                <div class="hover"><img src="assets/goXU8.png" (click)="handleClick(photo)" /></div>
               </div>
             </div>
           </div>
