@@ -1,20 +1,23 @@
 <div>
-  <mat-progress-bar *ngIf="userProfiles.length == 0" mode="query"></mat-progress-bar>
   <div fxLayout="row" fxLayoutAlign="center center" class="m-t-25">
     <div fxFlex="90" fxFlex.gt-xs="76" fxFlex.gt-md="60" fxFlexOffset="5" fxFlexOffset.gt-xs="12"
-      fxFlexOffset.gt-md="15">
+      fxFlexOffset.gt-md="20">
       <mat-card>
         <mat-card-header>
           <mat-card-title>Current Guests</mat-card-title>
         </mat-card-header>
+        <mat-progress-bar *ngIf="userProfiles.length == 0" mode="query"></mat-progress-bar>
         <mat-accordion>
-          <mat-expansion-panel *ngFor="let user of userProfiles">
+          <mat-expansion-panel *ngFor="let user of userProfiles" [ngClass]="{'decline':user.decline}">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 {{user.displayName}}
               </mat-panel-title>
-              <mat-panel-description>
+              <mat-panel-description *ngIf="!user.decline">
                 {{user.additional + user.additionalKids}} guests
+              </mat-panel-description>
+              <mat-panel-description *ngIf="user.decline">
+                DECLINED
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="5px">
