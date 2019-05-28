@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore'
-import { Photo } from 'src/app/models/photo'
-import { Observable } from 'rxjs'
+import { Photo, PhotoViewModel } from 'src/app/models/photo'
+import { Observable, combineLatest, Subject } from 'rxjs'
 import { AngularFireStorage } from '@angular/fire/storage'
+import { AuthService } from 'src/app/core/auth.service'
+import { takeUntil } from 'rxjs/operators'
 
 @Component({
   selector: 'app-photos',
@@ -11,17 +13,36 @@ import { AngularFireStorage } from '@angular/fire/storage'
 })
 export class PhotosComponent implements OnInit {
 
+  destroy$: Subject<boolean> = new Subject<boolean>()
+
   private photosCollection: AngularFirestoreCollection<Photo>
-  photos$: Observable<Photo[]>
+  photos: PhotoViewModel[]
 
   constructor(
+    public auth: AuthService,
     private afs: AngularFirestore,
     private afStorage: AngularFireStorage) {
+    this.photosCollection = this.afs.collection<Photo>('photos')
   }
 
   ngOnInit() {
-    this.photosCollection = this.afs.collection<Photo>('photos')
-    this.photos$ = this.photosCollection.valueChanges()
+    const users$ = this.auth.getAllUsers()
+    const photos$ = this.photosCollection.valueChanges()
+
+    combineLatest(users$, photos$, (_users, _photos) => {
+      this.photos = []
+      for (let _photo of _photos) {
+        this.photos.push({
+          id: _photo.id,
+          uid: _photo.uid,
+          fileName: _photo.fileName,
+          userName: _users.find(u => u.uid == _photo.uid).displayName,
+          url: _photo.url
+        })
+      }
+    })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe()
   }
 
   removePhoto(photo: Photo) {

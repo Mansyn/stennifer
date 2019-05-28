@@ -4,3 +4,11 @@ export interface Photo {
     fileName: string
     url: string
 }
+
+export interface PhotoViewModel {
+    id: string
+    uid: string
+    fileName: string
+    userName: string
+    url: string
+}
