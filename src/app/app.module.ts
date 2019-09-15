@@ -42,11 +42,7 @@ import { NotificationService } from './core/services/notification.service'
 import { PipesModule } from './components/pipes/pipes.module'
 import { DisableControlDirective } from './components/directives/disable-control'
 import { FocusDirective } from './components/directives/focus.directive'
-import { InvitationComponent } from './routes/invitation/invitation.component'
-import { ProfileService } from './core/profile.service';
-import { CountdownComponent } from './components/countdown/countdown.component';
-import { AccommodationsComponent } from './routes/accommodations/accommodations.component';
-import { PhotosComponent } from './routes/photos/photos.component'
+import { ProfileService } from './core/profile.service'
 
 @NgModule({
   declarations: [
@@ -58,11 +54,7 @@ import { PhotosComponent } from './routes/photos/photos.component'
     NavbarComponent,
     FooterComponent,
     DisableControlDirective,
-    FocusDirective,
-    InvitationComponent,
-    CountdownComponent,
-    AccommodationsComponent,
-    PhotosComponent
+    FocusDirective
   ],
   imports: [
     AngularFireAuthModule,

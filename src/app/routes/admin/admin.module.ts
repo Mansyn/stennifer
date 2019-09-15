@@ -28,11 +28,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage'
 import { AdminRoutingModule } from './admin-routing.module'
 import { PipesModule } from 'src/app/components/pipes/pipes.module'
 import { AdminComponent } from './admin.component'
-import { UsersComponent } from './users/users.component'
-import { UserPhoneDialog } from './users/users.component'
-import { UserRoleDialog } from './users/dialogs/user-role.component'
-import { GuestsComponent } from './guests/guests.component'
-import { PhotosComponent } from './photos/photos.component'
 
 @NgModule({
   imports: [
@@ -63,16 +58,7 @@ import { PhotosComponent } from './photos/photos.component'
     ReactiveFormsModule
   ],
   declarations: [
-    AdminComponent,
-    UsersComponent,
-    UserRoleDialog,
-    UserPhoneDialog,
-    GuestsComponent,
-    PhotosComponent
-  ],
-  entryComponents: [
-    UserPhoneDialog,
-    UserRoleDialog
+    AdminComponent
   ]
 })
 export class AdminModule { }
