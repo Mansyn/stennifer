@@ -2,7 +2,6 @@
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
-@import 'palettes';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -12,11 +11,11 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$stennifer-primary: mat-palette($primary-colors);
-$stennifer-accent: mat-palette($accent-colors, A200, A100, A400);
+$stennifer-primary: mat-palette($mat-grey);
+$stennifer-accent: mat-palette($mat-red, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$stennifer-warn: mat-palette($mat-red);
+$stennifer-warn: mat-palette($mat-yellow);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $stennifer-theme: mat-light-theme($stennifer-primary, $stennifer-accent, $stennifer-warn);
@@ -27,7 +26,6 @@ $stennifer-theme: mat-light-theme($stennifer-primary, $stennifer-accent, $stenni
 @include angular-material-theme($stennifer-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
 * {
   box-sizing: border-box;
 }
@@ -49,82 +47,16 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-h1,
-h2,
-h3 {
-  font-family: 'Copse', serif;
-}
-
-button:focus,
-img:focus,
-.lose-outline {
-  outline: 0;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.heavy {
-  font-weight: bold;
-}
-
-.mat-card {
-  background-color: mat-color($stennifer-accent, 50);
-  color: mat-color($stennifer-accent, 500);
-}
-
-$spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35);
-$sides: (top, bottom, left, right);
-
-@each $space in $spaceamounts {
-  @each $side in $sides {
-    .m-#{str-slice($side, 0, 1)}-#{$space} {
-      margin-#{$side}: #{$space}px !important;
-    }
-
-    .p-#{str-slice($side, 0, 1)}-#{$space} {
-      padding-#{$side}: #{$space}px !important;
-    }
-  }
-}
-
 .spacer {
   flex: 1 1 auto;
 }
 
-.txt-center {
-  text-align: center;
+html,
+body {
+  height: 100%;
 }
 
-.txt-left {
-  text-align: left;
-}
-
-.txt-right {
-  text-align: right;
-}
-
-.show-small {
-  display: none
-}
-
-@media (max-width:720px) {
-  .hide-small {
-    display: none
-  }
-
-  .show-small {
-    display: block;
-  }
-}
-
-@media (max-width:600px) {
-  .hide-xsmall {
-    display: none
-  }
-
-  .show-xsmall {
-    display: block;
-  }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

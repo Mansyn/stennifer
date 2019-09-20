@@ -2,16 +2,15 @@
 
 a:link,
 a:visited {
-  color: mat-color($stennifer-accent, 700);
+  color: mat-color($stennifer-primary, 700);
   text-decoration: none;
 }
 
 a:hover,
 a:active {
-  color: mat-color($stennifer-accent, 400);
+  color: mat-color($stennifer-primary, 400);
 }
 
 .mat-toolbar {
-  background: mat-color($stennifer-accent, 900);
-  border-top: 2px solid #B48F4C;
+  background: mat-color($stennifer-primary, 300);
 }
